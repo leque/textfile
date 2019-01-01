@@ -1,0 +1,112 @@
+body { 
+  font-family	: serif;
+  padding	: 1em 1em 2em;
+}
+
+table { 
+  width	: 100%;
+  margin	: 3em auto;
+  border-collapse	: collapse;
+}
+
+th, td { 
+  max-width	: 15em;
+  vertical-align	: baseline;
+  padding	: 0.25em 0.5em;
+}
+
+th { 
+  white-space	: nowrap;
+}
+
+td { 
+  padding	: 0.25em 0.5em 0.25em 1em;
+}
+
+td em { 
+  font-weight	: bold;
+  margin-left	: -0.5em;
+  margin-right	: 0.5em;
+}
+
+em.note { 
+  font-size	: 100%;
+  font-weight	: normal;
+  text-decoration	: underline;
+  margin	: 0;
+}
+
+th, em { 
+  font-size	: 120%;
+  font-style	: normal;
+}
+
+.kanji-group { 
+  margin-right	: 0.5em;
+}
+
+tbody th { 
+  width	: 10%;
+}
+
+th a { 
+  color	: black ! important;
+}
+
+#navigation a { 
+  margin-left	: 1em;
+}
+
+/* Éý 3 ¤ÎÉ½ */
+#dz-table tbody td
+, #iwi-table tbody td
+, #ewe-table tbody td
+, #owo-table tbody td
+, #kkwggw-a-table tbody td
+, #kkwggw-i-table tbody td
+, #kkwggw-e-table tbody td
+, #a-mn-table tbody td
+, #i-mn-table tbody td
+, #u-mn-table tbody td
+, #e-mn-table tbody td
+, #o-mn-table tbody td
+{ 
+  width	: 45%;
+}
+
+/* Éý 4 ¤ÎÉ½ */
+#yuu-table tbody td
+{ 
+  width	: 30%;
+}
+
+/* Éý 5 ¤ÎÉ½ */
+#ou-table tbody td
+, #you-table tbody td
+{ 
+  width	: 22.5%;
+}
+
+@media print { 
+  body { 
+    font-size	: 8pt;
+  }
+
+  #navigation { 
+    display	: none;
+  }
+
+  th a { 
+    text-decoration	: none ! important;
+  }
+
+  #ou-table
+  , #you-table
+  , #dz-table
+  , #ewe-table
+  , #a-mn-table
+  , #e-mn-table
+  { 
+    page-break-before	: always;
+  }
+}

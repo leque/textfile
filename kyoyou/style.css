@@ -1,0 +1,59 @@
+body {
+    font-family : serif;
+    line-height : 1.4;
+    padding : 2em 2em 3em;
+}
+
+h2 { margin-left : 5em; }
+h3 { margin-left : 4em; }
+
+#sig {
+    margin-right : 10%;
+    text-align : right;
+}
+
+#name {
+    margin-left : 2em;
+}
+
+/*
+ol {
+    list-style-type : cjk-ideographic;
+}
+*/
+
+ol {
+    counter-reset : ol1;
+    padding : 0;
+    margin : 0 0 0 1em;
+}
+
+ol > li {
+    display : block;
+    counter-increment : ol1;
+}
+
+ol > li > p:first-child:before {
+    content : counter(ol1, cjk-ideographic);
+    margin-right : 1em;
+    margin-left : -1em;
+}
+
+em {
+    font-style : normal;
+    border-radius : 0.5em;
+    border : 1px solid black;
+}
+
+p, .example { margin : 0; }
+
+.example {
+    list-style-type : none;
+    padding : 0 2em;
+    font-size : 80%;
+}
+
+hr {
+    margin : 4em auto 2em;
+    width : 40%;
+}

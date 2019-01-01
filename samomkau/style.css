@@ -1,0 +1,125 @@
+body { 
+  font-family	: serif;
+  margin	: 2em 1.5em 3em;
+}
+
+p, li, dd { 
+  line-height	: 1.5;
+  text-align	: justify;
+}
+
+h2, h3, h4, h5 { 
+  font-weight	: bold;
+  margin	: 2em 0 0.5em;
+}
+
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5
+{ 
+  margin-top	: 0.25em;
+}
+
+h1 { font-size	: 300%; text-align	: center; }
+h2 { font-size	: 200%; }
+h3 { font-size	: 150%; }
+h4 { font-size	: 120%; }
+h5 { 
+  font-size	: 100%;
+}
+
+ul { 
+  list-style-type	: circle;
+  padding-left	: 2em;
+}
+
+address { 
+  text-align	: right;
+  font-style	: normal;
+}
+
+dfn { 
+  font-style	: normal;
+  font-weight	: bold;
+}
+
+em { 
+  font-weight	: normal;
+  font-style	: normal;
+}
+
+rp, rt { 
+  color	: gray;
+  vertical-align	: bottom;
+  letter-spacing	: normal;
+}
+
+q:before { 
+  content	: "";
+}
+
+q:after { 
+  content	: "";
+}
+
+/* 振り假名、割り注は小書き */
+rp, rt, .warityuu { 
+  font-size	: 75%;
+  font-weight	: normal;
+}
+
+/* 注 */
+*[title] { 
+  text-decoration	: underline;
+}
+
+*[title]:after { 
+  content	: "*";
+  font-size	: 75%;
+  margin-right	: 0.25em;
+  vertical-align	: top;
+}
+
+/* 原文割注は括弧つきにしておく */
+.warityuu:before { 
+  content : "(";
+}
+
+.warityuu:after { 
+  content : ")";
+}
+
+
+/* 凡例 */
+#explanatory-note { 
+  margin	: 0 auto 3em;
+  padding-bottom	: 1em;
+  border-bottom	: solid 1px black;
+}
+
+/* 目録 */
+ul#toc > li { 
+  display	: inline;
+  display	: inline-table;
+  width	: 40%;
+  margin-right	: 0.5em;
+  white-space	: nowrap;
+}
+
+ul#toc2 li { 
+  display	: block;
+}
+
+/* 序、目録、文書末尾 */
+#eop, #eod { 
+  text-align	: right;
+}
+
+/* 奧付 */
+#colophon { 
+  margin-top	: 3em;
+  border-top	: solid 1px black;
+  padding-top	: 1em;
+}
+

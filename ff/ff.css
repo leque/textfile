@@ -1,0 +1,72 @@
+/* -*- coding: utf-8; -*- */
+body {
+    font-family : 'ヒラギノ丸ゴ Pro W4', 'Hiragino Maru Gothic Pro', sans-serif;
+}
+
+h1 {
+    margin-left : 1em;
+}
+
+#ff {
+    text-align : right;
+}
+
+#ff .yomi {
+    font-size : 75%;
+    color : black;
+}
+
+#ff table {
+    border-spacing : 0;
+    display : inline-table;
+    width : 19%;
+    min-width : 8em;
+    margin-left : 1%;
+    margin-bottom : 1em;
+}
+
+#ff th, #ff td {
+    text-align : center;
+    border : 1px solid #f58639;
+}
+
+#ff th {
+    color : white;
+    background-color : #f58639;
+    border-radius : 10px 10px 0 0;
+}
+
+#ff td {
+    margin : 0;
+    color : #872728;
+    background-color : #ffeedc;
+    border-top-width : 0;
+    padding : 1em;
+}
+
+#ff tr:last-child td {
+    border-radius : 0 0 10px 10px;
+}
+
+#nums {
+    border-radius : 10px;
+    border : solid 1px black;
+    width : 50%;
+    padding : 1em;
+    margin-left : auto;
+    margin-top : 1em;
+}
+
+#nums h2 {
+    margin : 0 0 0.5em;
+    padding : 0;
+}
+
+#nums table {
+    display : inline-table;
+    margin-right : 1em;
+}
+
+#nums th {
+    padding : 0.25em 0.5em;
+}
