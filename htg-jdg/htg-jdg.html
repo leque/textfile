@@ -36,13 +36,38 @@
           border-right : 1px solid #ccc;
           padding : 0.25em 0.5em;
       }
-      tbody td:nth-child(-n + 5) {
+      #chars tbody td:nth-child(-n + 5) {
           text-align : center;
       }
       tbody:nth-child(2n) tr {
           background-color : #eee;
       }
       tbody:nth-child(2n + 1) {
+      }
+
+      #syllables td {
+          text-align : center;
+          width : 4em;
+      }
+
+      /* Using grid to split a table cell https://www.peterkrautzberger.org/0213/ */
+      .split-cell {
+          display: grid;
+          width: max-content;
+          justify-content: space-between;
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 1fr;
+          background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><line x1='0' y1='0' x2='100' y2='100' stroke='rgb(204, 204, 204)' vector-effect='non-scaling-stroke'/></svg>");
+          background-size: 100% 100%;
+      }
+
+      .split-cell--tr {
+          grid-column-start: 2;
+          text-align: right;
+      }
+
+      .split-cell--bl {
+          grid-column-start: 1;
       }
     </style>
   </head>
@@ -51,7 +76,7 @@
     <p>
       Unicodeに収録されている変体仮名について、字源となった字の上代特殊仮名遣における甲乙をまとめる。
     </p>
-    <table class="sticky-table">
+    <table id="chars" class="sticky-table">
       <colgroup class="kana" />
       <colgroup class="char" />
       <colgroup class="origin" />
@@ -222,5 +247,31 @@
         </ul>
       </li>
     </ul>
+
+    <p>
+      通行の仮名のある音節はその字で代表させつつまとめると以下の通り。
+    </p>
+    <table id="syllables">
+      <thead>
+        <tr>
+          <th><div class="split-cell">
+              <div class="split-cell--tr">段</div>
+              <div class="split-cell--bl">行</div>
+          </div></th>
+          <th>ア</th><th>イ甲</th><th>イ乙</th><th>ウ</th><th>エ甲</th><th>エ乙</th><th>オ甲</th><th>オ乙</th></tr>
+      </thead>
+      <tbody class="char">
+        <tr><th>ア</th><td>あ</td><td>い</td><td>  </td><td>う</td><td>え</td><td>  </td><td>お</td><td>  </td></tr>
+        <tr><th>カ</th><td>か</td><td>𛀦</td><td>き</td><td>く</td><td>け</td><td>𛀴𛀵</td><td>𛀸𛀹𛀻</td><td>こ</td></tr>
+        <tr><th>サ</th><td>さ</td><td>し</td><td>  </td><td>す</td><td>せ</td><td>  </td><td>𛁜</td><td>そ</td></tr>
+        <tr><th>タ</th><td>た</td><td>ち</td><td>  </td><td>つ</td><td>て</td><td>  </td><td>𛁷𛁸𛁼𛁭</td><td>と</td></tr>
+        <tr><th>ナ</th><td>な</td><td>に</td><td>  </td><td>ぬ</td><td>ね</td><td>  </td><td>𛂏𛂐𛂑</td><td>の</td></tr>
+        <tr><th>ハ</th><td>は</td><td>ひ</td><td>𛂩𛂭𛂮𛂯</td><td>ふ</td><td>へ</td><td>𛂳</td><td>ほ</td><td>  </td></tr>
+        <tr><th>マ</th><td>ま</td><td>み</td><td>𛃊𛃏</td><td>む</td><td>め</td><td>※</td><td>も</td><td>𛃗</td></tr>
+        <tr><th>ヤ</th><td>や</td><td>  </td><td>  </td><td>ゆ</td><td>𛀁</td><td>  </td><td>𛃢</td><td>よ</td></tr>
+        <tr><th>ラ</th><td>ら</td><td>り</td><td>  </td><td>る</td><td>れ</td><td>  </td><td>𛄄𛄅𛄆𛄇</td><td>ろ</td></tr>
+        <tr><th>ワ</th><td>わ</td><td>ゐ</td><td>  </td><td>  </td><td>ゑ</td><td>  </td><td>を</td><td>  </td></tr>
+      </tbody>
+    </table>
   </body>
 </html>
