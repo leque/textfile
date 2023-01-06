@@ -1,0 +1,153 @@
+<html>
+<head>
+  <title>JSON[] tabulator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script type="application/javascript">
+    function isLeaf(obj) {
+        return (obj == null || typeof(obj) !== 'object' || Array.isArray(obj));
+    }
+    function guessStructure(obj) {
+        if (isLeaf(obj)) {
+            return [];
+        } else {
+            return Object.entries(obj).map(([key, value]) => {
+                if (isLeaf(value)) {
+                    return { key, children: [], width: 1, height: 1};
+                } else {
+                    const children = guessStructure(value);
+                    const width = children.map((c) => c.width).reduce((x, y) => x + y);
+                    const height = 1 + Math.max(...children.map((c) => c.height));
+                    return { key, children, width, height };
+                }
+            });
+        }
+    }
+
+    function makeHeader(nodes) {
+        const thead = document.createElement('thead');
+        const height = Math.max(0, ...nodes.map((c) => c.height));
+        let ns = nodes;
+        let depth = 0;
+        while (ns.length > 0) {
+            const tr = document.createElement('tr');
+            const r = height - depth;
+            for (const node of ns) {
+                const th = document.createElement('th');
+                th.setAttribute('scope', 'col');
+                th.append(node.key);
+                if (node.width > 1) {
+                    th.setAttribute('colspan', node.width);
+                }
+                if (node.children.length === 0 && r > 1) {
+                    th.setAttribute('rowspan', r);
+                }
+                tr.append(th);
+            }
+            thead.append(tr);
+            depth += 1;
+            ns = ns.flatMap(n => n.children);
+        }
+        return thead;
+    }
+
+    function makeBody(nodes, objs) {
+        const tbody = document.createElement('tbody');
+        for (const obj of objs) {
+            const tr = document.createElement('tr');
+            addCells(tr, nodes, obj);
+            tbody.append(tr);
+        }
+        return tbody;
+    }
+
+    function addCells(row, nodes, obj) {
+        for (const n of nodes) {
+            if (n.children.length > 0) {
+                addCells(row, n.children, obj[n.key]);
+            } else {
+                const td = document.createElement('td');
+                td.append('' + obj[n.key]);
+                row.append(td);
+            }
+        }
+    }
+
+    function makeTable(objs) {
+        const table = document.createElement('table');
+        const nodes = guessStructure(objs[0]);
+        table.append(makeHeader(nodes));
+        table.append(makeBody(nodes, objs));
+        return table;
+    }
+
+    function update() {
+        const errorDiv = document.getElementById('error');
+        errorDiv.style.display = 'none';
+        try {
+            const container = document.getElementById('container');
+            const paths = document.getElementById('path').value.split('.').map(p => p.trim()).filter(p => p.length > 0);
+            const src = document.getElementById('src').value;
+            const json = JSON.parse(src);
+            container.replaceChildren(makeTable(paths.reduce((acc, p) => acc[p], json)));
+        } catch (e) {
+            errorDiv.replaceChildren('' + e);
+            errorDiv.style.display = 'block';
+        }
+    }
+  </script>
+  <style>
+    body {
+        margin : 2em 1em 3em;
+    }
+    table {
+        border-top : 1px solid #ddd;
+        border-left : 1px solid #ddd;
+        border-collapse : collapse;
+    }
+    th {
+        background-clip: padding-box;
+        background-color : white;
+        vertical-align : middle;
+    }
+    th, td {
+        border-bottom : 1px solid #ccc;
+        border-right : 1px solid #ccc;
+        padding : 0.25em 0.5em;
+    }
+    #container {
+        overflow : scroll;
+    }
+    #error {
+        display : none;
+    }
+  </style>
+</head>
+<body>
+  <h1>JSON[] tabulator</h1>
+  <p>
+    tabulates a JSON array with representing elements structures by using table header spans.
+  </p>
+  <div id="error" class="alert alert-danger">
+  </div>
+  <div class="mb-5">
+    <div class="mb-3">
+      <label for="src" class="form-label">JSON data</label>
+      <textarea id="src" class="form-control" cols="60" rows="10">{
+  "prefectures": [
+     { "code": 1, "name": "Hokkaido", "capital": {"name": "Sapporo", "coordinate": {"latitude": 43.06208, "longitude": 141.35439}}, "region": "Hokkaido"},
+     { "code": 2, "name": "Aomori", "capital": {"name": "Aomori", "coordinate": {"latitude": 40.82461, "longitude": 140.74056}}, "region": "Tohoku"}
+  ]
+}</textarea>
+    </div>
+    <div class="mb-3">
+      <label for="path">path (dot separated)</label>
+      <input id="path" class="form-control" type="text" value="prefectures" placeholder="data.users" /></label>
+    </div>
+    <div class="mb-3">
+      <button class="btn btn-primary" onclick="update()">make table</button>
+    </div>
+  </div>
+  <div id="container">
+  </div>
+</body>
+</html>
