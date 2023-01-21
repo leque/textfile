@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>食品成分表示抽出</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <script type="application/javascript" src="./food-labeling.js"></script>
+    <script type="application/javascript">
+      function doIt() {
+          const errorDiv = document.getElementById('error');
+          errorDiv.style.display = 'none';
+          try {
+              const text = document.getElementById('text').value;
+              const factor =  +document.getElementById('factor').value;
+              const obj = parse(text, factor);
+              document.getElementById('json').value = JSON.stringify(obj, null, 2);
+          } catch (e) {
+              errorDiv.replaceChildren('' + e);
+              errorDiv.style.display = 'block';
+          }
+      }
+</script>
+    <style>
+      body {
+          padding : 1em 1em 2em;
+      }
+      #error {
+          display : none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>食品成分表示抽出</h1>
+    <p>
+      食品成分表示のテキストから成分量を抽出しJSON化します。
+      単純な文字列マッチングなのでうまく動いたり動かなかったりします。
+    </p>
+    <p>食品成分表示のテキスト化はスマートフォンのテキスト認識表示機能などを使ってください。</p>
+    <hr />
+    <div id="error" class="alert alert-danger">
+    </div>
+    <div>
+      <div class="form-group">
+        <label for="text">食品成分表示を含むテキスト</label>
+        <textarea id="text" class="form-control" rows="10"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="factor">×係数</label>
+        <input id="factor" class="form-control" type="number" value="1" />
+      </div>
+      <button class="btn btn-primary" onclick="doIt()">抽出</button>
+      <div class="form-group">
+        <label for="json">抽出結果（<a href="https://github.com/leque/textfile/blob/master/misc/food-labeling/food-labeling.schema.json">スキーマ</a>）</label>
+        <textarea id="json" class="form-control" rows="10"></textarea>
+      </div>
+    </div>
+  </body>
+</html>
