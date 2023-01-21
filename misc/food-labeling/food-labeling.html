@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>食品成分表示抽出</title>
@@ -5,18 +6,38 @@
 
     <script type="application/javascript" src="./food-labeling.js"></script>
     <script type="application/javascript">
-      function doIt() {
+      function withErrorReport(f) {
           const errorDiv = document.getElementById('error');
           errorDiv.style.display = 'none';
           try {
-              const text = document.getElementById('text').value;
-              const factor =  +document.getElementById('factor').value;
-              const obj = parse(text, factor);
-              document.getElementById('json').value = JSON.stringify(obj, null, 2);
+              f();
           } catch (e) {
               errorDiv.replaceChildren('' + e);
               errorDiv.style.display = 'block';
           }
+      }
+      function doIt() {
+          withErrorReport(() => {
+              const text = document.getElementById('text').value;
+              const factor =  +document.getElementById('factor').value;
+              const obj = parse(text, factor);
+              document.getElementById('json').value = JSON.stringify(obj, null, 2);
+          });
+      }
+      function clearText() {
+          withErrorReport(() => {
+              document.getElementById('text').value = "";
+          });
+      }
+      function copyJson() {
+          withErrorReport(() => {
+              const t = document.getElementById('json');
+              t.focus();
+              t.select();
+              document.execCommand('copy');
+              t.blur();
+              window.getSelection().removeAllRanges();
+          });
       }
 </script>
     <style>
@@ -41,16 +62,34 @@
     <div>
       <div class="form-group">
         <label for="text">食品成分表示を含むテキスト</label>
-        <textarea id="text" class="form-control" rows="10"></textarea>
+        <div class="row">
+          <div class="col-11">
+            <textarea id="text" class="form-control" rows="10"></textarea>
+          </div>
+          <div class="col-1">
+            <button class="btn btn-light" onclick="clearText()">clear</button>
+          </div>
+        </div>
       </div>
       <div class="form-group">
         <label for="factor">×係数</label>
-        <input id="factor" class="form-control" type="number" value="1" />
+        <div class="row">
+          <div class="col-11">
+            <input id="factor" class="form-control" type="number" value="1" />
+          </div>
+        </div>
       </div>
       <button class="btn btn-primary" onclick="doIt()">抽出</button>
       <div class="form-group">
         <label for="json">抽出結果（<a href="https://github.com/leque/textfile/blob/master/misc/food-labeling/food-labeling.schema.json">スキーマ</a>）</label>
-        <textarea id="json" class="form-control" rows="10"></textarea>
+        <div class="row">
+          <div class="col-11">
+            <textarea id="json" class="form-control" rows="10"></textarea>
+          </div>
+          <div class="col-1">
+            <button class="btn btn-light" onclick="copyJson()">copy</button>
+          </div>
+        </div>
       </div>
     </div>
   </body>
