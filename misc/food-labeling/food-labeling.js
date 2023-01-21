@@ -50,14 +50,13 @@ const kcal = reOpt("kcal", "キロカロリー");
 const extract = (text, name, unit) => {
     const re = new RegExp(
         name +
-            "\\s*[:：]?\\s*" +
+            "[:：]?" +
             "(?<ll>[0-9]+(?:\\.[0-9]+)?)" +
             // maybe ranged
             ("(?:" +
-             "\\s*[-−〜]\\s*" +
+             "[-−〜]" +
              "(?<ul>[0-9]+(?:\\.[0-9]+)?)" +
              ")?") +
-            "\\s*" +
             unit);
     const m = text.match(re);
     if (m) {
@@ -85,7 +84,12 @@ const extractInto = (text, factor, name, unit, prop, obj) => {
     }
 }
 
-const parse = (text, factor) => {
+const preprocess = (text) =>
+      text
+      .replaceAll(/\s+/g, '')
+;
+
+const parse = (text_, factor) => {
     const result = {
         "name": "",
         "energy": null,
@@ -95,6 +99,7 @@ const parse = (text, factor) => {
         "na": null,
         "naclEquivalent": null
     };
+    const text = preprocess(text_);
     const f = (prop, unit, ...names) => extractInto(text, factor, reOpt(...names), unit, prop, result);
 
     f("protein",            g,    "たんぱく質",   "蛋白質", "たん白質", "タンパク質", "たんぱく", "タンパク");
