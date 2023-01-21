@@ -50,7 +50,7 @@ const kcal = reOpt("kcal", "キロカロリー");
 const extract = (text, name, unit) => {
     const re = new RegExp(
         name +
-            "[:：]?\\s*" +
+            "[:：]?" +
             "(?<ll>[0-9]+(?:\\.[0-9]+)?)" +
             // maybe ranged
             ("(?:" +
@@ -86,7 +86,10 @@ const extractInto = (text, factor, name, unit, prop, obj) => {
 
 const preprocess = (text) =>
       text
-      .replaceAll(/(?<!B1)\s+(?!2)/g, '') // ビタミンB1とB12を混同しないようにB1と2の間の空白は残す
+      // ビタミンB1とB12を混同しないようにB1と2の間の空白はコロンに置き換える
+      .replaceAll(/B1\s+2/g, 'B1:2')
+      // それ以外の空白は意味に影響を与えないはずなので消す
+      .replaceAll(/\s+/g, '')
 ;
 
 const parse = (text_, factor) => {
