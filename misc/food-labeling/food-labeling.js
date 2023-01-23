@@ -50,7 +50,7 @@ const kcal = reOpt("kcal", "キロカロリー");
 const extract = (text, name, unit) => {
     const re = new RegExp(
         name +
-            "[:：]?" +
+            ":?" +
             "(?<ll>[0-9]+(?:\\.[0-9]+)?)" +
             // maybe ranged
             ("(?:" +
@@ -122,7 +122,9 @@ const preprocess = (text) =>
       .replaceAll(/B1\s+2/g, 'B1:2')
       // それ以外の空白は意味に影響を与えないはずなので消す
       .replaceAll(/\s+/g, '')
-      // 丸括弧を全角に正規化（正規表現の読みやすさのため）
+      // 全角半角下付き数字等々の違いを無視するためにNFKC正規化
+      .normalize('NFKC')
+      // 丸括弧を全角にする（正規表現の読みやすさのため）
       .replaceAll(/\u{0028}/gu, '（')
       .replaceAll(/\u{0029}/gu, '）')
 ;
