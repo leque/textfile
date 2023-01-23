@@ -52,6 +52,24 @@
         "folate": { "description": "葉酸（μg）", "type": "number" },
         "energy": { "description": "熱量（kcal）", "type": "number" },
         "naclEquivalent": { "description": "食塩相当量（g）", "type": "number" },
+        "unitAmounts": {
+            "type": "array",
+            "description": "食品単位の表示",
+            "items": {
+                "type": "object",
+                "required": ["unit", "amount"],
+                "properties": {
+                    "unit": {
+                        "type": "string",
+                        "description": "食品単位の単位"
+                    },
+                    "amount": {
+                        "type": "number",
+                        "description": "食品単位の量"
+                    }
+                }
+            }
+        },
         "name": { "description": "名称", "type": "string" }
     }
 }

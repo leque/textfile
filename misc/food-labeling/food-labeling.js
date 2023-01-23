@@ -84,12 +84,47 @@ const extractInto = (text, factor, name, unit, prop, obj) => {
     }
 }
 
+const extractUnitAmount = (text) => {
+    const re = /(?<amount>[0-9]+)(?<unit>.+?)(?:（(?<amount2>[0-9]+)(?<unit2>.+?)）)?当たり/u;
+    const m = text.match(re);
+    if (m) {
+        const result = [
+            {
+                amount: +m.groups.amount,
+                unit: m.groups.unit,
+            }
+        ];
+        if (m.groups.amount2 && m.groups.unit2) {
+            result.push({
+                amount: +m.groups.amount2,
+                unit: m.groups.unit2,
+            });
+        }
+        return result;
+    }
+    return null;
+}
+
+const extractUnitAmountInto = (text, factor, obj) => {
+    const vs = extractUnitAmount(text);
+    if (vs) {
+        obj.unitAmounts =
+            vs.map(v => ({
+                amount: v.amount * factor,
+                unit: v.unit,
+            }));
+    }
+}
+
 const preprocess = (text) =>
       text
       // ビタミンB1とB12を混同しないようにB1と2の間の空白はコロンに置き換える
       .replaceAll(/B1\s+2/g, 'B1:2')
       // それ以外の空白は意味に影響を与えないはずなので消す
       .replaceAll(/\s+/g, '')
+      // 丸括弧を全角に正規化（正規表現の読みやすさのため）
+      .replaceAll(/\u{0028}/gu, '（')
+      .replaceAll(/\u{0029}/gu, '）')
 ;
 
 const parse = (text_, factor) => {
@@ -151,6 +186,8 @@ const parse = (text_, factor) => {
     if (!result.naclEquivalent && result.na) {
         delete result.naclEquivalent;
     }
+
+    extractUnitAmountInto(text, factor, result);
 
     return result;
 }
