@@ -135,9 +135,7 @@ const parse = (text_, factor) => {
         "energy": null,
         "protein": null,
         "fat": null,
-        "carbohydrate": null,
-        "na": null,
-        "naclEquivalent": null
+        "carbohydrate": null
     };
     const text = preprocess(text_);
     const f = (prop, unit, ...names) => extractInto(text, factor, reOpt(...names), unit, prop, result);
@@ -181,12 +179,8 @@ const parse = (text_, factor) => {
     f("energy",             kcal, "熱量",         "エネルギー");
     f("naclEquivalent",     g,    "食塩相当量");
 
-    if (result.naclEquivalent && !result.na) {
-        delete result.na;
-    }
-
-    if (!result.naclEquivalent && result.na) {
-        delete result.naclEquivalent;
+    if (!result.na && !result.naclEquivalent) {
+        result.na = null;
     }
 
     extractUnitAmountInto(text, factor, result);
