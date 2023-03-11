@@ -7,14 +7,30 @@
      * These codes are licensed under CC0.
      * https://creativecommons.org/publicdomain/zero/1.0/
      */
+    function entries(obj) {
+        if (Array.isArray(obj)) {
+            return obj;
+        } else {
+            return Object.entries(obj);
+        }
+    }
+
+    function assoc(obj, key) {
+        if (Array.isArray(obj)) {
+            return obj.find(([k, _]) => k === key)[1];
+        } else {
+            return obj[key];
+        }
+    }
+
     function isLeaf(obj) {
-        return (obj == null || typeof(obj) !== 'object' || Array.isArray(obj));
+        return (obj == null || typeof(obj) !== 'object' || Array.isArray(obj) === false);
     }
     function guessStructure(obj) {
         if (isLeaf(obj)) {
             return [];
         } else {
-            return Object.entries(obj).map(([key, value]) => {
+            return entries(obj).map(([key, value]) => {
                 if (isLeaf(value)) {
                     return { key, children: [], width: 1, height: 1};
                 } else {
