@@ -23,9 +23,20 @@
         }
     }
 
-    function isLeaf(obj) {
-        return (obj == null || typeof(obj) !== 'object' || Array.isArray(obj) === false);
+    function isKeyValueArray(obj) {
+        return Array.isArray(obj)
+            && (obj.length === 0
+                || (Array.isArray(obj[0])
+                    && obj[0].length === 2
+                    && typeof(obj[0][0]) === 'string'));
     }
+
+    function isLeaf(obj) {
+        return (obj == null
+                || typeof(obj) !== 'object'
+                || (Array.isArray(obj) && isKeyValueArray(obj) === false));
+    }
+
     function guessStructure(obj) {
         if (isLeaf(obj)) {
             return [];
@@ -83,10 +94,10 @@
     function addCells(row, nodes, obj) {
         for (const n of nodes) {
             if (n.children.length > 0) {
-                addCells(row, n.children, obj[n.key]);
+                addCells(row, n.children, assoc(obj, n.key));
             } else {
                 const td = document.createElement('td');
-                td.append('' + obj[n.key]);
+                td.append('' + assoc(obj, n.key));
                 row.append(td);
             }
         }
@@ -147,6 +158,19 @@
   <p>
     tabulates a JSON array with representing elements structures by using table header spans.
   </p>
+  <p>
+    An input should be an <code>T[]</code> where:
+  </p>
+  <pre><code>type T = TLeaf | TNode
+
+type TLeaf
+  = boolean | string | number
+  | T[] /* arrays */
+
+type TNode
+  = { [key: string]: T } /* objects */
+  | [string, T][] /* key-value pairs */</code></pre>
+
   <div id="error" class="alert alert-danger">
   </div>
   <div class="mb-5">
