@@ -151,6 +151,9 @@
     #error {
         display : none;
     }
+    hr {
+        margin : 3em 0 3em;
+    }
   </style>
 </head>
 <body>
@@ -171,11 +174,13 @@ type TNode
   = { [key: string]: T } /* objects */
   | [string, T][] /* key-value pairs */</code></pre>
 
+  <hr />
+
   <div id="error" class="alert alert-danger">
   </div>
   <div class="mb-5">
     <div class="mb-3">
-      <label for="src" class="form-label">JSON data</label>
+      <label for="src" class="form-label">input JSON data</label>
       <textarea id="src" class="form-control" cols="60" rows="10">{
   "prefectures": [
      { "code": 1, "name": "Hokkaido", "capital": {"name": "Sapporo", "coordinate": {"latitude": 43.06208, "longitude": 141.35439}}, "region": "Hokkaido"},
