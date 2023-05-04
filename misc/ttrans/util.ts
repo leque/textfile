@@ -17,7 +17,13 @@ export const addZhToneMark = (input: string): Array<string> => {
     return [text];
 };
 
-export const addJaChoonMark = (input: [string, string]): Array<RuleEntry> => {
+export const addJaChoonMark = (input: [string, string]): Array<RuleEntry> =>
+    addJaChoonMark_ (input, "\u{0304}");
+
+export const addJaOldChoonMark = (input: [string, string]): Array<RuleEntry> =>
+    addJaChoonMark_ (input, "\u{0302}");
+
+const addJaChoonMark_ = (input: [string, string], mark: string): Array<RuleEntry> => {
     const [pattern, replacement] = input;
     if (pattern.match(/[aiueo]$/)) {
         return [
@@ -25,7 +31,7 @@ export const addJaChoonMark = (input: [string, string]): Array<RuleEntry> => {
                 pattern, replacement
             },
             {
-                pattern: (pattern + "\u{0304}").normalize('NFC'),
+                pattern: (pattern + mark).normalize('NFC'),
                 replacement: replacement + "ー"
             }
         ];

@@ -1,23 +1,18 @@
 import { addJaChoonMark, printRule, RuleEntry }  from './util.ts'
 
-const makeJaHepburnRule = (): Array<RuleEntry> => {
-    const result: Array<RuleEntry> = jaHepburnPats.flatMap(x => addJaChoonMark(x));
+const makeJaKunreiRule = (): Array<RuleEntry> => {
+    const result: Array<RuleEntry> = jaKunreiPats.flatMap(x => addJaChoonMark(x));
     const inits = [
         "k", "s", "t",
-        "h", "f", "m", "y", "r",
-        "g", "z", "j", "d", "b",
+        "h", "m", "y", "r",
+        "g", "z", "d", "b",
         "p"
     ];
     inits.forEach((c) => result.push({pattern: c + c, replacement: "ッ", next: c}));
-    result.push({
-        pattern: "tch",
-        replacement: "ッ",
-        next: "ch"
-    });
     return result;
 };
 
-const jaHepburnPats: Array<[string, string]> = [
+const jaKunreiPats: Array<[string, string]> = [
     ["a", "ア"],
     ["i", "イ"],
     ["u", "ウ"],
@@ -29,13 +24,13 @@ const jaHepburnPats: Array<[string, string]> = [
     ["ke", "ケ"],
     ["ko", "コ"],
     ["sa", "サ"],
-    ["shi", "シ"],
+    ["si", "シ"],
     ["su", "ス"],
     ["se", "セ"],
     ["so", "ソ"],
     ["ta", "タ"],
-    ["chi", "チ"],
-    ["tsu", "ツ"],
+    ["ti", "チ"],
+    ["tu", "ツ"],
     ["te", "テ"],
     ["to", "ト"],
     ["na", "ナ"],
@@ -45,7 +40,7 @@ const jaHepburnPats: Array<[string, string]> = [
     ["no", "ノ"],
     ["ha", "ハ"],
     ["hi", "ヒ"],
-    ["fu", "フ"],
+    ["hu", "フ"],
     ["he", "ヘ"],
     ["ho", "ホ"],
     ["ma", "マ"],
@@ -73,18 +68,18 @@ const jaHepburnPats: Array<[string, string]> = [
     ["gyu", "ギュ"],
     ["gye", "ギェ"],
     ["gyo", "ギョ"],
-    ["sha", "シャ"],
-    ["shu", "シュ"],
-    ["she", "シェ"],
-    ["sho", "ショ"],
-    ["ja", "ジャ"],
-    ["ju", "ジュ"],
-    ["je", "ジェ"],
-    ["jo", "ジョ"],
-    ["cha", "チャ"],
-    ["chu", "チュ"],
-    ["che", "チェ"],
-    ["cho", "チョ"],
+    ["sya", "シャ"],
+    ["syu", "シュ"],
+    ["sye", "シェ"],
+    ["syo", "ショ"],
+    ["zya", "ジャ"],
+    ["zyu", "ジュ"],
+    ["zye", "ジェ"],
+    ["zyo", "ジョ"],
+    ["tya", "チャ"],
+    ["tyu", "チュ"],
+    ["tye", "チェ"],
+    ["tyo", "チョ"],
     ["bya", "ビャ"],
     ["byu", "ビュ"],
     ["bye", "ビェ"],
@@ -107,7 +102,7 @@ const jaHepburnPats: Array<[string, string]> = [
     ["ge", "ゲ"],
     ["go", "ゴ"],
     ["za", "ザ"],
-    ["ji", "ジ"],
+    ["zi", "ジ"],
     ["zu", "ズ"],
     ["ze", "ゼ"],
     ["zo", "ゾ"],
@@ -126,4 +121,4 @@ const jaHepburnPats: Array<[string, string]> = [
     ["po", "ポ"]
 ];
 
-printRule(makeJaHepburnRule());
+printRule(makeJaKunreiRule());

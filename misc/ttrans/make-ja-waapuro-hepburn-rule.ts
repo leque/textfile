@@ -1,7 +1,7 @@
-import { addJaChoonMark, printRule, RuleEntry }  from './util.ts'
+import { printRule, RuleEntry }  from './util.ts'
 
-const makeJaHepburnRule = (): Array<RuleEntry> => {
-    const result: Array<RuleEntry> = jaHepburnPats.flatMap(x => addJaChoonMark(x));
+const makeJaWaapuroHepburnRule = (): Array<RuleEntry> => {
+    const result: Array<RuleEntry> = jaWaapuroHepburnPats.map(([pattern, replacement]) => ({pattern, replacement}));
     const inits = [
         "k", "s", "t",
         "h", "f", "m", "y", "r",
@@ -17,7 +17,8 @@ const makeJaHepburnRule = (): Array<RuleEntry> => {
     return result;
 };
 
-const jaHepburnPats: Array<[string, string]> = [
+const jaWaapuroHepburnPats: Array<[string, string]> = [
+    ["-", "ー"],
     ["a", "ア"],
     ["i", "イ"],
     ["u", "ウ"],
@@ -63,7 +64,7 @@ const jaHepburnPats: Array<[string, string]> = [
     ["ro", "ロ"],
     ["wa", "ワ"],
     ["wo", "ヲ"],
-    ["n'", "ン"],
+    ["nn", "ン"],
     ["n", "ン"],
     ["kya", "キャ"],
     ["kyu", "キュ"],
@@ -126,4 +127,4 @@ const jaHepburnPats: Array<[string, string]> = [
     ["po", "ポ"]
 ];
 
-printRule(makeJaHepburnRule());
+printRule(makeJaWaapuroHepburnRule());
