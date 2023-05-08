@@ -2,13 +2,30 @@ import { addJaChoonMark, printRule, RuleEntry }  from './util.ts'
 
 const makeJaKunreiRule = (): Array<RuleEntry> => {
     const result: Array<RuleEntry> = jaKunreiPats.flatMap(x => addJaChoonMark(x));
-    const inits = [
+    [
         "k", "s", "t",
         "h", "m", "y", "r",
         "g", "z", "d", "b",
         "p"
-    ];
-    inits.forEach((c) => result.push({pattern: c + c, replacement: "ッ", next: c}));
+    ].forEach((c) => result.push({pattern: c + c, replacement: "ッ", next: c}));
+    [
+        "k", "s", "t", "n",
+        "h", "f", "m", "y", "r",
+        "g", "z", "j", "d", "b", "p"
+    ].forEach((c) => {
+        result.push({
+            pattern: "n" + c,
+            replacement: "ン",
+            next: c
+        });
+    });
+    ["a", "i", "u", "e", "o"].forEach(c => {
+        result.push({
+            pattern: "n'" + c,
+            replacement: "ン",
+            next: c
+        });
+    });
     return result;
 };
 
@@ -58,8 +75,6 @@ const jaKunreiPats: Array<[string, string]> = [
     ["ro", "ロ"],
     ["wa", "ワ"],
     ["wo", "ヲ"],
-    ["n'", "ン"],
-    ["n", "ン"],
     ["kya", "キャ"],
     ["kyu", "キュ"],
     ["kye", "キェ"],

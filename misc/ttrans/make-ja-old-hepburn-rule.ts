@@ -2,32 +2,41 @@ import { addJaOldChoonMark, printRule, RuleEntry }  from './util.ts'
 
 const makeJaOldHepburnRule = (): Array<RuleEntry> => {
     const result: Array<RuleEntry> = jaOldHepburnPats.flatMap(x => addJaOldChoonMark(x));
-    const inits = [
+    [
         "k", "s", "t",
-        "h", "f", "y", "r",
+        "h", "f", "m", "y", "r",
         "g", "z", "j", "d", "b",
         "p"
-    ];
-    inits.forEach((c) => result.push({pattern: c + c, replacement: "ッ", next: c}));
+    ].forEach((c) => result.push({pattern: c + c, replacement: "ッ", next: c}));
     result.push({
         pattern: "tch",
         replacement: "ッ",
         next: "ch"
     });
-    result.push({
-        pattern: "mb",
-        replacement: "ン",
-        next: "b"
+    [
+        "k", "s", "t", "n",
+        "h", "f", "y", "r",
+        "g", "z", "j", "d"
+    ].forEach((c) => {
+        result.push({
+            pattern: "n" + c,
+            replacement: "ン",
+            next: c
+        });
     });
-    result.push({
-        pattern: "mm",
-        replacement: "ン",
-        next: "m"
+    ["a", "i", "u", "e", "o"].forEach(c => {
+        result.push({
+            pattern: "n-" + c,
+            replacement: "ン",
+            next: c
+        });
     });
-    result.push({
-        pattern: "mp",
-        replacement: "ン",
-        next: "p"
+    ["b", "m", "p"].forEach(c => {
+        result.push({
+            pattern: "m" + c,
+            replacement: "ン",
+            next: c
+        });
     });
     return result;
 };
@@ -78,9 +87,6 @@ const jaOldHepburnPats: Array<[string, string]> = [
     ["ro", "ロ"],
     ["wa", "ワ"],
     ["wo", "ヲ"],
-    ["n-", "ン"],
-    ["n", "ン"],
-    ["m", "ン"],
     ["kya", "キャ"],
     ["kyu", "キュ"],
     ["kye", "キェ"],

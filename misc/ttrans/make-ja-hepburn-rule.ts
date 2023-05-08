@@ -2,13 +2,30 @@ import { addJaChoonMark, printRule, RuleEntry }  from './util.ts'
 
 const makeJaHepburnRule = (): Array<RuleEntry> => {
     const result: Array<RuleEntry> = jaHepburnPats.flatMap(x => addJaChoonMark(x));
-    const inits = [
+    [
         "k", "s", "t",
         "h", "f", "m", "y", "r",
         "g", "z", "j", "d", "b",
         "p"
-    ];
-    inits.forEach((c) => result.push({pattern: c + c, replacement: "ッ", next: c}));
+    ].forEach((c) => result.push({pattern: c + c, replacement: "ッ", next: c}));
+    [
+        "k", "s", "t", "n",
+        "h", "f", "m", "y", "r",
+        "g", "z", "j", "d", "b", "p"
+    ].forEach((c) => {
+        result.push({
+            pattern: "n" + c,
+            replacement: "ン",
+            next: c
+        });
+    });
+    ["a", "i", "u", "e", "o"].forEach(c => {
+        result.push({
+            pattern: "n'" + c,
+            replacement: "ン",
+            next: c
+        });
+    });
     result.push({
         pattern: "tch",
         replacement: "ッ",
@@ -63,8 +80,6 @@ const jaHepburnPats: Array<[string, string]> = [
     ["ro", "ロ"],
     ["wa", "ワ"],
     ["wo", "ヲ"],
-    ["n'", "ン"],
-    ["n", "ン"],
     ["kya", "キャ"],
     ["kyu", "キュ"],
     ["kye", "キェ"],
