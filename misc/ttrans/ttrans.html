@@ -70,7 +70,17 @@
       }
 
       window.addEventListener('load', (_event) => {
-        populateRule()
+          const params = new URL(document.location).searchParams;
+          const t = params.get('t');
+          const r = params.get('rule');
+          if (r) {
+              document.getElementById('translation-rule-select').value = r;
+          }
+          populateRule()
+          if (t) {
+              document.getElementById('text').value = t;
+              doIt();
+          }
       });
 </script>
     <style>
