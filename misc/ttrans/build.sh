@@ -19,4 +19,5 @@ makeRule() {
     makeRule jaOldHepburnRule make-ja-old-hepburn-rule.ts
     makeRule jaWaapuroHepburnRule make-ja-waapuro-hepburn-rule.ts
     makeRule jaWaapuroKunreiRule make-ja-waapuro-kunrei-rule.ts
+    makeRule jaWaapuroKunreiJoudaiRule make-ja-waapuro-kunrei-joudai-rule.ts
 } > "$dst"
