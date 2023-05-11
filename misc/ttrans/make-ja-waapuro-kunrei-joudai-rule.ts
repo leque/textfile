@@ -8,7 +8,7 @@ const makeJaWaapuroKunreiRule = (): Array<RuleEntry> => {
         "g", "z", "d", "b",
         "p"
     ];
-    inits.forEach((c) => result.push({pattern: c + c, replacement: "ッ", next: c}));
+    inits.forEach((c) => result.push({pattern: c + c, replacement: "っ", next: c}));
     return result;
 };
 
