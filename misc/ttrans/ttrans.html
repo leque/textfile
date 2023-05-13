@@ -60,11 +60,9 @@
               const converted = ttrans(text, rule);
               document.getElementById('result').value = converted;
 
-              const permalink = new URL(document.location);
               const r = document.getElementById('translation-rule-select').value;
               const searchParams = new URLSearchParams({t: text, rule: r});
-              permalink.search = '?' + searchParams;
-              document.getElementById('permalink').href = permalink;
+              document.getElementById('permalink').href = '?' + searchParams;
           });
       }
       function clearText() {
@@ -160,6 +158,11 @@
         </div>
       </div>
     </div>
+    <h2>サンプル</h2>
+    <ul>
+      <li><a href="?t=%E9%A4%83%E5%AD%90%09ji%C7%8Eozi%0A%E7%82%92%E9%A3%AF%09ch%C7%8Eof%C3%A0n%0A%E9%BA%BB%E5%A9%86%E8%B1%86%E8%85%90%09m%C3%A1p%C3%B3d%C3%B2ufu%0A%E6%8B%85%E6%8B%85%E9%BA%BA%09d%C3%A0nd%C3%A0nmi%C3%A0n%0A%E7%84%BC%E5%A3%B2%09sh%C4%81om%C3%A0i%0A%E9%9D%92%E6%A4%92%E8%82%89%E7%B5%B2%09q%C4%ABngji%C4%81or%C3%B2us%C4%AB%0A%E5%B0%8F%E7%B1%A0%E5%8C%85%09xi%C7%8Eol%C3%B3ngb%C4%81o%0A%E5%9B%9E%E9%8D%8B%E8%82%89%09hu%C3%ADgu%C5%8Dr%C3%B2u%0A%E6%B2%B9%E6%B7%8B%E9%B6%8F%09y%C3%B3ul%C3%ADnj%C4%AB%0A%E6%8B%89%E9%BA%BA%09l%C4%81mi%C3%A0n%0A%E5%85%AB%E5%AE%9D%E8%8F%9C%09b%C4%81b%C7%8Eoc%C3%A0i%0A%E5%A4%A9%E6%B4%A5%E9%A3%AF%09ti%C4%81nj%C4%ABnf%C3%A0n%0A%E9%85%B8%E8%BE%A3%E6%B9%AF%09su%C4%81nl%C3%A0t%C4%81ng&rule=cn-media">中華料理名</a></li>
+      <li><a href="?t=ahumi1no2umi1%0Ayuhunami1tido2ri%0Anaganake2ba%0Ako2ko2ro2mo2sino1ni%0Ainisihe1omo2hoyu&rule=ja-waapuro-kunrei-joudai">万葉集 266</a></li>
+    </ul>
     <h2>参考</h2>
     <ul>
       <li>
