@@ -14,6 +14,7 @@
       }
     </style>
     <script type="application/javascript" src="./ttrans.js"></script>
+    <script type="application/javascript" src="./cn-unihan-mandarin-rule.js"></script>
     <script type="application/javascript">
       function withErrorReport(f) {
           const errorDiv = document.getElementById('error');
@@ -31,6 +32,10 @@
               return cnMediaRule;
           case 'cn-edu':
               return cnEduRule;
+          case 'cn-unihan-mandarin':
+              return cnUnihanMandarinRule;
+          case 'cn-unihan-mandarin-media':
+              return cnUnihanMandarinMediaRule;
           case 'ja-hepburn':
               return jaHepburnRule;
           case 'ja-kunrei':
@@ -49,14 +54,22 @@
       }
       function populateRule() {
           withErrorReport(() => {
-              const text = selectRule().map((r, i, a) => ("  " + JSON.stringify(r) + (i == a.length - 1 ? "" : ",") + "\n")).join("");
-              document.getElementById('translation-rule').value = "[\n" + text + "]\n";
+              const rule = selectRule();
+              const t = document.getElementById('translation-rule');
+              t.disabled = rule.length > 4000;
+              if (t.disabled) {
+                  t.value = "...";
+              } else {
+                  const text = rule.map((r, i, a) => ("  " + JSON.stringify(r) + (i == a.length - 1 ? "" : ",") + "\n")).join("");
+                  t.value = "[\n" + text + "]\n";
+              }
           });
       }
       function doIt() {
           withErrorReport(() => {
               const text = document.getElementById('text').value;
-              const rule = JSON.parse(document.getElementById('translation-rule').value);
+              const tr = document.getElementById('translation-rule');
+              const rule = tr.disabled ? selectRule() : JSON.parse(tr.value);
               const converted = ttrans(text, rule);
               document.getElementById('result').value = converted;
 
@@ -140,14 +153,26 @@
         <div class="row">
           <div class="col-11">
             <select id="translation-rule-select" onchange="populateRule()">
-              <option value="cn-media">中国語音節表記ガイドライン［平凡社版］ メディア向け表記ガイドライン</option>
-              <option value="cn-edu">中国語音節表記ガイドライン［平凡社版］ 語学教育向け表記ガイドライン</option>
-              <option value="ja-hepburn">ヘボン式ローマ字</option>
-              <option value="ja-kunrei">訓令式ローマ字</option>
-              <option value="ja-old-hepburn">旧ヘボン式ローマ字</option>
-              <option value="ja-waapuro-hepburn">ヘボン式風ワープロローマ字</option>
-              <option value="ja-waapuro-kunrei">訓令式風ワープロローマ字</option>
-              <option value="ja-waapuro-kunrei-joudai">訓令式風ワープロローマ字+上代特殊仮名遣</option>
+              <optgroup label="拼音→カタカナ">
+                <option value="cn-media">中国語音節表記ガイドライン［平凡社版］ メディア向け表記ガイドライン</option>
+                <option value="cn-edu">中国語音節表記ガイドライン［平凡社版］ 語学教育向け表記ガイドライン</option>
+              </optgroup>
+              <optgroup label="漢字→拼音">
+                <option value="cn-unihan-mandarin">Unihan Database Mandarin Reading</option>
+              </optgroup>
+              <optgroup label="漢字→カタカナ（中国語音）">
+                <option value="cn-unihan-mandarin-media">Unihan Database Mandarin Reading + 平凡社版中国語音節表記メディア向け表記ガイドライン</option>
+              </optgroup>
+              <optgroup label="ローマ字→カタカナ">
+                <option value="ja-hepburn">ヘボン式ローマ字</option>
+                <option value="ja-kunrei">訓令式ローマ字</option>
+                <option value="ja-old-hepburn">旧ヘボン式ローマ字</option>
+                <option value="ja-waapuro-hepburn">ヘボン式風ワープロローマ字</option>
+                <option value="ja-waapuro-kunrei">訓令式風ワープロローマ字</option>
+              </optgroup>
+              <optgroup label="ローマ字→ひらがな">
+                <option value="ja-waapuro-kunrei-joudai">訓令式風ワープロローマ字+上代特殊仮名遣</option>
+              </optgroup>
             </select>
           </div>
         </div>
@@ -170,6 +195,7 @@
         <a href="https://cn.heibonsha.co.jp/">中国語音節表記ガイドライン［平凡社版］（2011年8月1日公開）</a>
       </li>
       <li><a href="https://leque.github.io/textfile/htg-jdg/htg-jdg.html">変体仮名・上代特殊仮名遣甲乙表</a></li>
+      <li><a href="http://www.unicode.org/reports/tr38/#N10211">UAX #38: Unicode Han Database (Unihan)</a></li>
     </ul>
     </div>
   </body>
