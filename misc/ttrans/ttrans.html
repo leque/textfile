@@ -12,6 +12,9 @@
       #text, #result, #translation-rule {
           font-family: HentaiGana, var(--bs-font-sans-serif);
       }
+      button:not([disabled]) > *[role="status"] {
+          display : none;
+      }
     </style>
     <script type="application/javascript" src="./ttrans.js"></script>
     <script type="application/javascript" src="./cn-unihan-mandarin-rule.js"></script>
@@ -24,6 +27,14 @@
           } catch (e) {
               errorDiv.replaceChildren('' + e);
               errorDiv.style.display = 'block';
+          }
+      }
+      function withProgress(buttonId, f) {
+          document.getElementById(buttonId).disabled = true;
+          try {
+              f();
+          } finally {
+              document.getElementById(buttonId).disabled = false;
           }
       }
       function selectRule() {
@@ -69,13 +80,15 @@
           withErrorReport(() => {
               const text = document.getElementById('text').value;
               const tr = document.getElementById('translation-rule');
-              const rule = tr.disabled ? selectRule() : JSON.parse(tr.value);
-              const converted = ttrans(text, rule);
-              document.getElementById('result').value = converted;
+              withProgress("button-do-it", () => {
+                  const rule = tr.disabled ? selectRule() : JSON.parse(tr.value);
+                  const converted = ttrans(text, rule);
+                  document.getElementById('result').value = converted;
 
-              const r = document.getElementById('translation-rule-select').value;
-              const searchParams = new URLSearchParams({t: text, rule: r});
-              document.getElementById('permalink').href = '?' + searchParams;
+                  const r = document.getElementById('translation-rule-select').value;
+                  const searchParams = new URLSearchParams({t: text, rule: r});
+                  document.getElementById('permalink').href = '?' + searchParams;
+              });
           });
       }
       function clearText() {
@@ -135,7 +148,10 @@
           </div>
         </div>
       </div>
-      <button class="btn btn-primary" onclick="doIt()">変換</button>
+      <button id="button-do-it" class="btn btn-primary" onclick="doIt()" type="button">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        変換
+      </button>
       <div class="form-group">
         <label for="result">変換結果（<a id="permalink" href="">permalink</a>）</label>
         <div class="row">
