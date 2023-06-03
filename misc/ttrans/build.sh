@@ -20,4 +20,5 @@ makeRule() {
     makeRule jaWaapuroHepburnRule make-ja-waapuro-hepburn-rule.ts
     makeRule jaWaapuroKunreiRule make-ja-waapuro-kunrei-rule.ts
     makeRule jaWaapuroKunreiJoudaiRule make-ja-waapuro-kunrei-joudai-rule.ts
+    cat cn-unihan-mandarin-rule.js
 } > "$dst"
