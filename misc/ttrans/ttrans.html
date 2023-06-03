@@ -31,11 +31,13 @@
       }
       function withProgress(buttonId, f) {
           document.getElementById(buttonId).disabled = true;
-          try {
-              f();
-          } finally {
-              document.getElementById(buttonId).disabled = false;
-          }
+          setTimeout(() => {
+              try {
+                  f();
+              } finally {
+                  document.getElementById(buttonId).disabled = false;
+              }
+          }, 1);
       }
       function selectRule() {
           switch(document.getElementById('translation-rule-select').value) {
@@ -77,10 +79,10 @@
           });
       }
       function doIt() {
-          withErrorReport(() => {
-              const text = document.getElementById('text').value;
-              const tr = document.getElementById('translation-rule');
-              withProgress("button-do-it", () => {
+          withProgress("button-do-it", () => {
+              withErrorReport(() => {
+                  const text = document.getElementById('text').value;
+                  const tr = document.getElementById('translation-rule');
                   const rule = tr.disabled ? selectRule() : JSON.parse(tr.value);
                   const converted = ttrans(text, rule);
                   document.getElementById('result').value = converted;
