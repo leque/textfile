@@ -1,6 +1,7 @@
 #!/bin/sh
 deno=${deno:-deno}
-dst=ttrans.js
+ttrans=ttrans.js
+ctrans=ctrans.js
 
 makeRule() {
     var="$1"
@@ -12,13 +13,17 @@ makeRule() {
 
 {
     cat _ttrans.js
-    makeRule cnMediaRule make-cn-media-rule.ts
-    makeRule cnEduRule make-cn-edu-rule.ts
     makeRule jaHepburnRule make-ja-hepburn-rule.ts
     makeRule jaKunreiRule make-ja-kunrei-rule.ts
     makeRule jaOldHepburnRule make-ja-old-hepburn-rule.ts
     makeRule jaWaapuroHepburnRule make-ja-waapuro-hepburn-rule.ts
     makeRule jaWaapuroKunreiRule make-ja-waapuro-kunrei-rule.ts
     makeRule jaWaapuroKunreiJoudaiRule make-ja-waapuro-kunrei-joudai-rule.ts
+} > "$ttrans"
+
+{
+    cat _ttrans.js
+    makeRule cnMediaRule make-cn-media-rule.ts
+    makeRule cnEduRule make-cn-edu-rule.ts
     cat cn-unihan-mandarin-rule.js
-} > "$dst"
+} > "$ctrans"
