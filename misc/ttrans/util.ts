@@ -17,6 +17,25 @@ export const addZhToneMark = (input: string): Array<string> => {
     return [text];
 };
 
+export const addZhToneMark2 = (input: string, replacement: string): Array<[string, string]> => {
+    const text = input.normalize('NFC');
+    const pats = [/a/, /(o|e|ê)/, /(iu|ui)/, /(i|u|ü)/];
+    const marks = [
+        ["\u{0304}", "\u{02c9}"],
+        ["\u{0301}", "\u{02ca}"],
+        ["\u{030c}", "\u{02c7}"],
+        ["\u{0300}", "\u{02cb}"],
+    ];
+
+    for (const pat of pats) {
+        if (text.match(pat)) {
+            return marks.map(([m1, m2]) =>
+                [text.replace(pat, (s) => s + m1).normalize('NFC'), replacement + m2 + " "]);
+        }
+    }
+    return [[text, replacement + " "]];
+};
+
 export const addJaChoonMark = (input: [string, string]): Array<RuleEntry> =>
     addJaChoonMark_ (input, "\u{0304}");
 

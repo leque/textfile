@@ -25,5 +25,6 @@ makeRule() {
     cat _ttrans.js
     makeRule cnMediaRule make-cn-media-rule.ts
     makeRule cnEduRule make-cn-edu-rule.ts
+    makeRule cnEduToneRule make-cn-edu+tone-rule.ts
     cat cn-unihan-mandarin-rule.js
 } > "$ctrans"

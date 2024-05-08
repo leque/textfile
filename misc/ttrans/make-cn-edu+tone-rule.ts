@@ -1,14 +1,13 @@
-import { addZhToneMark, printRule, RuleEntry }  from './util.ts'
+import { addZhToneMark2, printRule, RuleEntry }  from './util.ts'
 import { cnEduPats }  from './cn-edu-pats.ts'
 
 const makeCnEduRule = (): Array<RuleEntry> => {
     const result = cnEduPats.flatMap(([pat, replacement, qingsheng]) => {
-        const ps = addZhToneMark(pat);
-        const result = ps.map((pattern) => ({ pattern, replacement }));
+        const result = addZhToneMark2(pat, replacement).map(([pattern, replacement]) => ({ pattern, replacement }));
         if (qingsheng) {
             result.push({
                 pattern: pat,
-                replacement: qingsheng
+                replacement: "\u{02d9}" + qingsheng + " "
             });
         } else {
             result.push({
