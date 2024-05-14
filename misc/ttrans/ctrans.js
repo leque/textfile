@@ -1,37 +1,21 @@
-const ttrans = (text, rule) => {
+const ctrans = (text, rule) => {
     let input = text.normalize('NFC').toLowerCase();
     const result = [];
-    const [re, map] = compileRule(rule);
-    while (true) {
-        const m = input.match(re);
-        if (m) {
-            const [_m, before, match, after] = m;
-            result.push(before);
-            const r = map.get(match);
-            if (r) {
-                const {replacement, next} = r;
-                result.push(replacement);
-                input = next ? (next + after) : after;
-            } else {
-                result.push(match);
-                input = after;
-            }
-        } else {
-            result.push(input);
-            break;
-        }
-    }
-    return result.join('');
+    const {pattern, mapping} = rule;
+    return input.replaceAll(pattern, (x) => {
+        const m = mapping.get(x);
+        return m ?? x;
+    });
 };
 
 const compileRule = (rule) => {
     const alts = rule
           .sort((a, b) => -compareInt(a.pattern.length, b.pattern.length))
           .map(r => r.pattern).join("|");
-    const re = new RegExp(`(.*?)(${alts})(.*)`, "su");
-    const map = new Map(rule.map(({pattern, replacement, next}) =>
-        [pattern, {replacement, next}]));
-    return [re, map];
+    const pattern = new RegExp(`(${alts})`, "sug");
+    const mapping = new Map(rule.map(({pattern, replacement}) =>
+        [pattern, replacement]));
+    return {pattern, mapping};
 };
 
 const compareInt = (x, y) =>
@@ -39,7 +23,14 @@ const compareInt = (x, y) =>
       : x < y ? -1
       : 0;
 
-const cnMediaRule =
+const composeRule = (x, y) => ({
+    pattern: x.pattern,
+    mapping: new Map([...x.mapping.entries()].map(([k, v]) => [
+        k,
+        y.mapping.get(v) ?? v
+    ]))
+});
+const cnMediaRule0 =
 [
   {"pattern":"ā","replacement":"アー"},
   {"pattern":"á","replacement":"アー"},
@@ -2104,7 +2095,9 @@ const cnMediaRule =
   {"pattern":" ","replacement":""}
 ]
 ;
-const cnEduRule =
+const cnMediaRule = compileRule(cnMediaRule0);
+
+const cnEduRule0 =
 [
   {"pattern":"ā","replacement":"アァ"},
   {"pattern":"á","replacement":"アァ"},
@@ -4169,7 +4162,9 @@ const cnEduRule =
   {"pattern":" ","replacement":""}
 ]
 ;
-const cnEduToneRule =
+const cnEduRule = compileRule(cnEduRule0);
+
+const cnEduToneRule0 =
 [
   {"pattern":"ā","replacement":"アァˉ "},
   {"pattern":"á","replacement":"アァˊ "},
@@ -6234,12 +6229,14 @@ const cnEduToneRule =
   {"pattern":" ","replacement":""}
 ]
 ;
+const cnEduToneRule = compileRule(cnEduToneRule0);
+
 /// ********** DO NOT EDIT **********
 /// Generated from
 ///   Unihan_Readings.txt
 ///   Date: 2022-08-01 16:36:07 GMT [JHJ]
 ///   Unicode version: 15.0.0
-const cnUnihanMandarinRule = [
+const cnUnihanMandarinRule0 = [
 {"pattern":"㐀","replacement":"qiū"},
 {"pattern":"㐁","replacement":"tiàn"},
 {"pattern":"㐄","replacement":"kuà"},
@@ -47661,11 +47658,6 @@ const cnUnihanMandarinRule = [
 {"pattern":"𰻞","replacement":"biáng"},
 ];
 
-const cnUnihanMandarinMediaRule =  (() => {
-    const m = new Map(cnMediaRule.map(({pattern, replacement}) => [pattern, replacement]));
-    return cnUnihanMandarinRule.map(({pattern, replacement}) => ({
-        pattern,
-        replacement: m.get(replacement) ?? replacement
-    }));
-})();
+const cnUnihanMandarinRule = compileRule(cnUnihanMandarinRule0);
 
+const cnUnihanMandarinMediaRule = composeRule(cnUnihanMandarinRule, cnMediaRule);

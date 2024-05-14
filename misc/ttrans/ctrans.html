@@ -59,7 +59,7 @@
               withErrorReport(() => {
                   const text = document.getElementById('text').value;
                   const rule = selectRule();
-                  const converted = ttrans(text, rule);
+                  const converted = ctrans(text, rule);
                   document.getElementById('result').value = converted;
 
                   const r = document.getElementById('translation-rule-select').value;

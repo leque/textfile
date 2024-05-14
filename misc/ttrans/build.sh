@@ -11,6 +11,16 @@ makeRule() {
     echo ";"
 }
 
+makeCRule() {
+    var="$1"
+    src="$2"
+    echo "const ${var}0 ="
+    "$deno" run --check "$src"
+    echo ";"
+    echo "const $var = compileRule(${var}0);"
+    echo
+}
+
 {
     cat _ttrans.js
     makeRule jaHepburnRule make-ja-hepburn-rule.ts
@@ -22,9 +32,9 @@ makeRule() {
 } > "$ttrans"
 
 {
-    cat _ttrans.js
-    makeRule cnMediaRule make-cn-media-rule.ts
-    makeRule cnEduRule make-cn-edu-rule.ts
-    makeRule cnEduToneRule make-cn-edu+tone-rule.ts
+    cat _ctrans.js
+    makeCRule cnMediaRule make-cn-media-rule.ts
+    makeCRule cnEduRule make-cn-edu-rule.ts
+    makeCRule cnEduToneRule make-cn-edu+tone-rule.ts
     cat cn-unihan-mandarin-rule.js
 } > "$ctrans"

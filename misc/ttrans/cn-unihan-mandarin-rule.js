@@ -3,7 +3,7 @@
 ///   Unihan_Readings.txt
 ///   Date: 2022-08-01 16:36:07 GMT [JHJ]
 ///   Unicode version: 15.0.0
-const cnUnihanMandarinRule = [
+const cnUnihanMandarinRule0 = [
 {"pattern":"㐀","replacement":"qiū"},
 {"pattern":"㐁","replacement":"tiàn"},
 {"pattern":"㐄","replacement":"kuà"},
@@ -41425,11 +41425,6 @@ const cnUnihanMandarinRule = [
 {"pattern":"𰻞","replacement":"biáng"},
 ];
 
-const cnUnihanMandarinMediaRule =  (() => {
-    const m = new Map(cnMediaRule.map(({pattern, replacement}) => [pattern, replacement]));
-    return cnUnihanMandarinRule.map(({pattern, replacement}) => ({
-        pattern,
-        replacement: m.get(replacement) ?? replacement
-    }));
-})();
+const cnUnihanMandarinRule = compileRule(cnUnihanMandarinRule0);
 
+const cnUnihanMandarinMediaRule = composeRule(cnUnihanMandarinRule, cnMediaRule);
