@@ -1,10 +1,10 @@
 const ctrans = (text, rule) => {
     let input = text.normalize('NFC').toLowerCase();
     const result = [];
-    const {pattern, mapping} = rule;
+    const {pattern, replacer} = rule;
     return input.replaceAll(pattern, (x) => {
-        const m = mapping.get(x);
-        return m ?? x;
+        const m = replacer(x);
+        return m ? m : x;
     });
 };
 
@@ -15,7 +15,7 @@ const compileRule = (rule) => {
     const pattern = new RegExp(`(${alts})`, "sug");
     const mapping = new Map(rule.map(({pattern, replacement}) =>
         [pattern, replacement]));
-    return {pattern, mapping};
+    return {pattern, replacer: (x) => mapping.get(x)};
 };
 
 const compareInt = (x, y) =>
@@ -25,10 +25,11 @@ const compareInt = (x, y) =>
 
 const composeRule = (x, y) => ({
     pattern: x.pattern,
-    mapping: new Map([...x.mapping.entries()].map(([k, v]) => [
-        k,
-        y.mapping.get(v) ?? v
-    ]))
+    replacer: (v1) => {
+        const v2 = x.replacer(v1);
+        if (!v2) return v1;
+        return y.replacer(v2);
+    }
 });
 const cnMediaRule0 =
 [
