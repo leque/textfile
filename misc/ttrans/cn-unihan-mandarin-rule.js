@@ -41428,3 +41428,5 @@ const cnUnihanMandarinRule0 = [
 const cnUnihanMandarinRule = compileRule(cnUnihanMandarinRule0);
 
 const cnUnihanMandarinMediaRule = composeRule(cnUnihanMandarinRule, cnMediaRule);
+const cnUnihanMandarinEduRule = composeRule(cnUnihanMandarinRule, cnEduRule);
+const cnUnihanMandarinEduToneRule = composeRule(cnUnihanMandarinRule, cnEduToneRule);

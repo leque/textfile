@@ -50,6 +50,10 @@
               return cnUnihanMandarinRule;
           case 'cn-unihan-mandarin-media':
               return cnUnihanMandarinMediaRule;
+          case 'cn-unihan-mandarin-edu':
+              return cnUnihanMandarinEduRule;
+          case 'cn-unihan-mandarin-edu+tone':
+              return cnUnihanMandarinEduToneRule;
           default:
               return [];
           }
@@ -108,6 +112,8 @@
     <h1>中国語カタカナ変換</h1>
     <p>
       <a href="https://cn.heibonsha.co.jp/">中国語音節表記ガイドライン［平凡社版］</a>に基づき中国語の漢字表記や拼音表記をカタカナ表記に変換します。
+      漢字→拼音はUnicodeのUnihan Databaseに基づいています。
+      声調の表記は注音符号での表記を参考にしています。
     </p>
     <hr />
     <div class="form-group">
@@ -125,6 +131,8 @@
             </optgroup>
             <optgroup label="漢字→カタカナ（中国語音）">
               <option value="cn-unihan-mandarin-media">Unihan Database Mandarin Reading + 平凡社版中国語音節表記メディア向け表記ガイドライン</option>
+              <option value="cn-unihan-mandarin-edu">Unihan Database Mandarin Reading + 平凡社版中国語音節表記語学教育向け表記ガイドライン</option>
+              <option value="cn-unihan-mandarin-edu+tone">Unihan Database Mandarin Reading + 平凡社版中国語音節表記語学教育向け表記ガイドライン + 声調記号</option>
             </optgroup>
           </select>
         </div>
