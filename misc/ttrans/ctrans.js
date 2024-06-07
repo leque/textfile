@@ -27,7 +27,7 @@ const composeRule = (x, y) => ({
     pattern: x.pattern,
     replacer: (v1) => {
         const v2 = x.replacer(v1);
-        if (!v2) return v1;
+        if (!v2) return v2;
         return y.replacer(v2);
     }
 });
