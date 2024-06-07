@@ -1,5 +1,5 @@
 const ttrans = (text, rule) => {
-    let input = text.normalize('NFC').toLowerCase();
+    let input = text.normalize('NFC');
     const result = [];
     const [re, map] = compileRule(rule);
     while (true) {
