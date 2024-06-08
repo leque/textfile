@@ -2,18 +2,19 @@
 <html lang="ja">
   <head>
     <title>変体仮名・上代特殊仮名遣甲乙表</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
+    </style>
     <style type="text/css">
       @font-face {
 	font-family: HentaiGana;
-	src: url('../fonts/UniHentaiKana-Regular.woff') format('woff') ;
+	src: url('../fonts/NotoSerifHentaigana-Regular.otf') format('opentype') ;
       }
       .kana, .char, .origin, .type, .on-kun {
           width : 4em;
       }
-      .char, td:nth-child(2), .example {
-          font-family : HentaiGana;
-      }
       body {
+          font-family : "Noto Serif JP", HentaiGana, serif;
           padding : 24pt 36pt 72pt;
           line-height : 1.7;
           -webkit-text-size-adjust : 100%;
@@ -230,7 +231,7 @@
     </table>
 
     <ul>
-      <li>使用フォント: <a href="https://wakufactory.jp/densho/font/hentai/">Unicode変体仮名フォント</a></li>
+      <li>使用フォント: <a href="https://github.com/notofonts/hentaigana">Noto Serif Hentaigana</a> v1.000</li>
       <li>変体仮名一覧と字源は Unicode 13.0 時点の Code Charts <a href="https://www.unicode.org/charts/PDF/U1B000.pdf">Kana Supplement</a> と <a href="https://www.unicode.org/charts/PDF/U1B100.pdf">Kana Extended-A</a> によった。</li>
       <li>甲乙の別は三省堂『時代別国語大辞典 上代編』の付録「主要万葉仮名一覧表」に従った。
         <ul>
