@@ -57,6 +57,7 @@ const jaWaapuroKunreiPats: Array<[string, string]> = [
     ["zo2", "\u{1b05a}\u{3099}"],
     ["do1", "\u{1b06d}\u{3099}"],
     ["do2", "\u{1b07b}\u{3099}"],
+    ["e1", "\u{1b011}"],
     ["-", "ー"],
     ["a", "あ"],
     ["i", "い"],

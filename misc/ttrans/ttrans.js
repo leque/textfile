@@ -1072,6 +1072,7 @@ const jaWaapuroKunreiJoudaiRule =
   {"pattern":"zo2","replacement":"𛁚゙"},
   {"pattern":"do1","replacement":"𛁭゙"},
   {"pattern":"do2","replacement":"𛁻゙"},
+  {"pattern":"e1","replacement":"𛀑"},
   {"pattern":"-","replacement":"ー"},
   {"pattern":"a","replacement":"あ"},
   {"pattern":"i","replacement":"い"},
