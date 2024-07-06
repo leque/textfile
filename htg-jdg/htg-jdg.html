@@ -44,6 +44,12 @@
       #chars tbody td:nth-child(-n + 5) {
           text-align : center;
       }
+      #chars tbody {
+          td:nth-child(7), td:nth-child(8), td:nth-child(9) {
+              text-align : center;
+              width: 7em;
+          }
+      }
       tbody:nth-child(2n) tr {
           background-color : #eee;
       }
@@ -88,7 +94,7 @@
       Unicodeに収録されている変体仮名について、字源となった字の上代特殊仮名遣における甲乙をまとめる。
     </p>
     <p>
-      合わせて、変体仮名による上代特殊仮名遣の書き分け可能性について検討する。
+      本文書ではさらに、変体仮名による上代特殊仮名遣の書き分け可能性について検討する。下表にはこの際の使用文字選定の参考情報として、<a href="https://cid.ninjal.ac.jp/kana">学術情報交換用変体仮名 | 国立国語研究所</a>にもとづき、精興社変体仮名、中西印刷変体仮名、明治27年築地活版五号明朝体活字変体仮名への収録状況を合わせて示す（リンク先に情報がないものは？とする）。
     </p>
     <table id="chars" class="sticky-table">
       <colgroup class="kana" />
@@ -97,142 +103,156 @@
       <colgroup class="type" />
       <colgroup class="on-kun" />
       <colgroup class="note" />
+      <colgroup />
+      <colgroup />
+      <colgroup />
       <thead>
-        <tr><th>かな</th><th>字</th><th>字源</th><th>甲乙</th><th>音訓</th><th>備考</th></tr>
+        <tr>
+          <th rowspan="2">かな</th>
+          <th rowspan="2">字</th>
+          <th rowspan="2">字源</th>
+          <th rowspan="2">甲乙</th>
+          <th rowspan="2">音訓</th>
+          <th rowspan="2">備考</th>
+          <th colspan="3">収録状況</th>
+        </tr>
+        <tr>
+          <th>精興社</th><th>中西印刷</th><th>築地活版1894</th>
+        </tr>
       </thead>
       <tbody id="ki">
-<tr><td>き</td><td>き</td><td>幾</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>き</td><td>𛀣</td><td>喜</td><td>-</td><td>音</td><td></td></tr>
-<tr><td>き</td><td>𛀤</td><td>幾</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>き</td><td>𛀥</td><td>幾</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>き</td><td>𛀦</td><td>支</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>き</td><td>𛀧</td><td>木</td><td>乙</td><td>訓</td><td></td></tr>
-<tr><td>き</td><td>𛀨</td><td>祈</td><td>-</td><td>音</td><td></td></tr>
-<tr><td>き</td><td>𛀩</td><td>貴</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>き</td><td>𛀪</td><td>起</td><td>-</td><td>音</td><td></td></tr>
-<tr><td>き</td><td>𛀻</td><td>期</td><td>-</td><td>音</td><td>ゴ乙の万葉仮名</td></tr>
+<tr><td>き</td><td>き</td><td>幾</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>き</td><td>𛀣</td><td>喜</td><td>-</td><td>音</td><td></td><td>○</td><td>○</td><td>-</td></tr>
+<tr><td>き</td><td>𛀤</td><td>幾</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>き</td><td>𛀥</td><td>幾</td><td>乙</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>き</td><td>𛀦</td><td>支</td><td>甲</td><td>音</td><td></td><td>○</td><td>○</td><td>-</td></tr>
+<tr><td>き</td><td>𛀧</td><td>木</td><td>乙</td><td>訓</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>き</td><td>𛀨</td><td>祈</td><td>-</td><td>音</td><td></td><td>○</td><td>-</td><td>-</td></tr>
+<tr><td>き</td><td>𛀩</td><td>貴</td><td>乙</td><td>音</td><td></td><td>？</td><td>？</td><td>？</td></tr>
+<tr><td>き</td><td>𛀪</td><td>起</td><td>-</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>き</td><td>𛀻</td><td>期</td><td>-</td><td>音</td><td>ゴ乙の万葉仮名</td><td>-</td><td>-</td><td>-</td></tr>
       </tbody>
       <tbody id="hi">
-<tr><td>ひ</td><td>ひ</td><td>比</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>ひ</td><td>𛂩</td><td>悲</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>ひ</td><td>𛂪</td><td>日</td><td>甲</td><td>訓</td><td></td></tr>
-<tr><td>ひ</td><td>𛂫</td><td>比</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>ひ</td><td>𛂬</td><td>避</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>ひ</td><td>𛂭</td><td>非</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>ひ</td><td>𛂮</td><td>飛</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>ひ</td><td>𛂯</td><td>飛</td><td>乙</td><td>音</td><td></td></tr>
+<tr><td>ひ</td><td>ひ</td><td>比</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>ひ</td><td>𛂩</td><td>悲</td><td>乙</td><td>音</td><td></td><td>○</td><td>-</td><td>○</td></tr>
+<tr><td>ひ</td><td>𛂪</td><td>日</td><td>甲</td><td>訓</td><td></td><td>○</td><td>○</td><td>-</td></tr>
+<tr><td>ひ</td><td>𛂫</td><td>比</td><td>甲</td><td>音</td><td></td><td>○</td><td>○</td><td>-</td></tr>
+<tr><td>ひ</td><td>𛂬</td><td>避</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>ひ</td><td>𛂭</td><td>非</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>ひ</td><td>𛂮</td><td>飛</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>○</td></tr>
+<tr><td>ひ</td><td>𛂯</td><td>飛</td><td>乙</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
       </tbody>
       <tbody id="mi">
-<tr><td>み</td><td>み</td><td>美</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>み</td><td>𛃉</td><td>三</td><td>甲</td><td>訓</td><td></td></tr>
-<tr><td>み</td><td>𛃊</td><td>微</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>み</td><td>𛃋</td><td>美</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>み</td><td>𛃌</td><td>美</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>み</td><td>𛃍</td><td>美</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>み</td><td>𛃎</td><td>見</td><td>甲</td><td>訓</td><td></td></tr>
-<tr><td>み</td><td>𛃏</td><td>身</td><td>乙</td><td>訓</td><td></td></tr>
+<tr><td>み</td><td>み</td><td>美</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>み</td><td>𛃉</td><td>三</td><td>甲</td><td>訓</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>み</td><td>𛃊</td><td>微</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>み</td><td>𛃋</td><td>美</td><td>甲</td><td>音</td><td></td><td>○</td><td>○</td><td>-</td></tr>
+<tr><td>み</td><td>𛃌</td><td>美</td><td>甲</td><td>音</td><td></td><td>-</td><td>○</td><td>○</td></tr>
+<tr><td>み</td><td>𛃍</td><td>美</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>み</td><td>𛃎</td><td>見</td><td>甲</td><td>訓</td><td></td><td>○</td><td>○</td><td>-</td></tr>
+<tr><td>み</td><td>𛃏</td><td>身</td><td>乙</td><td>訓</td><td></td><td>-</td><td>○</td><td>-</td></tr>
       </tbody>
       <tbody id="ke">
-<tr><td>け</td><td>け</td><td>計</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>け</td><td>𛀲</td><td>介</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>け</td><td>𛀳</td><td>介</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>け</td><td>𛀴</td><td>希</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>け</td><td>𛀵</td><td>気</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>け</td><td>𛀶</td><td>計</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>け</td><td>𛀷</td><td>遣</td><td>-</td><td>音</td><td></td></tr>
-<tr><td>け</td><td>𛀢</td><td>家</td><td>甲</td><td>音</td><td></td></tr>
+<tr><td>け</td><td>け</td><td>計</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>け</td><td>𛀲</td><td>介</td><td>甲</td><td>音</td><td></td><td>？</td><td>？</td><td>？</td></tr>
+<tr><td>け</td><td>𛀳</td><td>介</td><td>甲</td><td>音</td><td></td><td>○</td><td>○</td><td>-</td></tr>
+<tr><td>け</td><td>𛀴</td><td>希</td><td>乙</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>け</td><td>𛀵</td><td>気</td><td>乙</td><td>音</td><td></td><td>○</td><td>○</td><td>-</td></tr>
+<tr><td>け</td><td>𛀶</td><td>計</td><td>甲</td><td>音</td><td></td><td>-</td><td>○</td><td>-</td></tr>
+<tr><td>け</td><td>𛀷</td><td>遣</td><td>-</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>け</td><td>𛀢</td><td>家</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
       </tbody>
       <tbody id="he">
-<tr><td>へ</td><td>へ</td><td>部</td><td>甲</td><td>訓</td><td></td></tr>
-<tr><td>へ</td><td>𛂳</td><td>倍</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>へ</td><td>𛂴</td><td>弊</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>へ</td><td>𛂵</td><td>弊</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>へ</td><td>𛂶</td><td>遍</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>へ</td><td>𛂷</td><td>邊</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>へ</td><td>𛂸</td><td>邊</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>へ</td><td>𛂹</td><td>部</td><td>甲</td><td>訓</td><td></td></tr>
+<tr><td>へ</td><td>へ</td><td>部</td><td>甲</td><td>訓</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>へ</td><td>𛂳</td><td>倍</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>へ</td><td>𛂴</td><td>弊</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>へ</td><td>𛂵</td><td>弊</td><td>甲</td><td>音</td><td></td><td>？</td><td>？</td><td>？</td></tr>
+<tr><td>へ</td><td>𛂶</td><td>遍</td><td>甲</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>へ</td><td>𛂷</td><td>邊</td><td>甲</td><td>音</td><td></td><td>-</td><td>○</td><td>-</td></tr>
+<tr><td>へ</td><td>𛂸</td><td>邊</td><td>甲</td><td>音</td><td></td><td>？</td><td>？</td><td>？</td></tr>
+<tr><td>へ</td><td>𛂹</td><td>部</td><td>甲</td><td>訓</td><td></td><td>-</td><td>○</td><td>-</td></tr>
       </tbody>
       <tbody id="me">
-<tr><td>め</td><td>め</td><td>女</td><td>甲</td><td>訓</td><td></td></tr>
-<tr><td>め</td><td>𛃔</td><td>免</td><td>-</td><td>音</td><td></td></tr>
-<tr><td>め</td><td>𛃕</td><td>面</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>め</td><td>𛃖</td><td>馬</td><td>甲</td><td>音</td><td></td></tr>
+<tr><td>め</td><td>め</td><td>女</td><td>甲</td><td>訓</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>め</td><td>𛃔</td><td>免</td><td>-</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>め</td><td>𛃕</td><td>面</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>め</td><td>𛃖</td><td>馬</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
       </tbody>
       <tbody id="ko">
-<tr><td>こ</td><td>こ</td><td>己</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>こ</td><td>𛀸</td><td>古</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>こ</td><td>𛀹</td><td>故</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>こ</td><td>𛀺</td><td>許</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>こ</td><td>𛀻</td><td>期</td><td>乙</td><td>音</td><td>濁音仮名</td></tr>
-<tr><td>こ</td><td>𛂘</td><td>子</td><td>甲</td><td>訓</td><td></td></tr>
+<tr><td>こ</td><td>こ</td><td>己</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>こ</td><td>𛀸</td><td>古</td><td>甲</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>こ</td><td>𛀹</td><td>故</td><td>甲</td><td>音</td><td></td><td>-</td><td>○</td><td>○</td></tr>
+<tr><td>こ</td><td>𛀺</td><td>許</td><td>乙</td><td>音</td><td></td><td>-</td><td>○</td><td>-</td></tr>
+<tr><td>こ</td><td>𛀻</td><td>期</td><td>乙</td><td>音</td><td>濁音仮名</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>こ</td><td>𛂘</td><td>子</td><td>甲</td><td>訓</td><td></td><td>○</td><td>○</td><td>-</td></tr>
       </tbody>
       <tbody id="so">
-<tr><td>そ</td><td>そ</td><td>曾</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>そ</td><td>𛁗</td><td>所</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>そ</td><td>𛁘</td><td>所</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>そ</td><td>𛁙</td><td>曾</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>そ</td><td>𛁚</td><td>曾</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>そ</td><td>𛁛</td><td>楚</td><td>-</td><td>音</td><td></td></tr>
-<tr><td>そ</td><td>𛁜</td><td>蘇</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>そ</td><td>𛁝</td><td>處</td><td>-</td><td>音</td><td></td></tr>
+<tr><td>そ</td><td>そ</td><td>曾</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>そ</td><td>𛁗</td><td>所</td><td>乙</td><td>音</td><td></td><td>○</td><td>○</td><td>-</td></tr>
+<tr><td>そ</td><td>𛁘</td><td>所</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>そ</td><td>𛁙</td><td>曾</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>○</td></tr>
+<tr><td>そ</td><td>𛁚</td><td>曾</td><td>乙</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>そ</td><td>𛁛</td><td>楚</td><td>-</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>そ</td><td>𛁜</td><td>蘇</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>そ</td><td>𛁝</td><td>處</td><td>-</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
       </tbody>
       <tbody id="to">
-<tr><td>と</td><td>と</td><td>止</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>と</td><td>𛁷</td><td>土</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>と</td><td>𛁸</td><td>度</td><td>甲</td><td>音</td><td>濁音仮名</td></tr>
-<tr><td>と</td><td>𛁹</td><td>東</td><td>-</td><td>音</td><td></td></tr>
-<tr><td>と</td><td>𛁺</td><td>登</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>と</td><td>𛁻</td><td>登</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>と</td><td>𛁼</td><td>砥</td><td>甲</td><td>訓</td><td></td></tr>
-<tr><td>と</td><td>𛁽</td><td>等</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>と</td><td>𛁭</td><td>徒</td><td>甲</td><td>音</td><td></td></tr>
+<tr><td>と</td><td>と</td><td>止</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>と</td><td>𛁷</td><td>土</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>と</td><td>𛁸</td><td>度</td><td>甲</td><td>音</td><td>濁音仮名</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>と</td><td>𛁹</td><td>東</td><td>-</td><td>音</td><td></td><td>-</td><td>○</td><td>-</td></tr>
+<tr><td>と</td><td>𛁺</td><td>登</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>○</td></tr>
+<tr><td>と</td><td>𛁻</td><td>登</td><td>乙</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>と</td><td>𛁼</td><td>砥</td><td>甲</td><td>訓</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>と</td><td>𛁽</td><td>等</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>と</td><td>𛁭</td><td>徒</td><td>甲</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
       </tbody>
       <tbody id="no">
-<tr><td>の</td><td>の</td><td>乃</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>の</td><td>𛂙</td><td>乃</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>の</td><td>𛂚</td><td>濃</td><td>-</td><td>音</td><td>ヌの万葉仮名</td></tr>
-<tr><td>の</td><td>𛂛</td><td>能</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>の</td><td>𛂜</td><td>能</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>の</td><td>𛂝</td><td>農</td><td>-</td><td>音</td><td>ヌの万葉仮名</td></tr>
+<tr><td>の</td><td>の</td><td>乃</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>の</td><td>𛂙</td><td>乃</td><td>乙</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>の</td><td>𛂚</td><td>濃</td><td>-</td><td>音</td><td>ヌの万葉仮名</td><td>○</td><td>-</td><td>-</td></tr>
+<tr><td>の</td><td>𛂛</td><td>能</td><td>乙</td><td>音</td><td></td><td>○</td><td>-</td><td>○</td></tr>
+<tr><td>の</td><td>𛂜</td><td>能</td><td>乙</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>の</td><td>𛂝</td><td>農</td><td>-</td><td>音</td><td>ヌの万葉仮名</td><td>○</td><td>○</td><td>-</td></tr>
       </tbody>
       <tbody id="mo">
-<tr><td>も</td><td>も</td><td>毛</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>も</td><td>𛃗</td><td>母</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>も</td><td>𛃘</td><td>毛</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>も</td><td>𛃙</td><td>毛</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>も</td><td>𛃚</td><td>毛</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>も</td><td>𛃛</td><td>茂</td><td>両</td><td>音</td><td></td></tr>
-<tr><td>も</td><td>𛃜</td><td>裳</td><td>両</td><td>訓</td><td></td></tr>
-<tr><td>も</td><td>𛄝</td><td>无</td><td>-</td><td>音</td><td>ムの万葉仮名</td></tr>
-<tr><td>も</td><td>𛄞</td><td>无</td><td>-</td><td>音</td><td>ムの万葉仮名</td></tr>
+<tr><td>も</td><td>も</td><td>毛</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>も</td><td>𛃗</td><td>母</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>も</td><td>𛃘</td><td>毛</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>○</td></tr>
+<tr><td>も</td><td>𛃙</td><td>毛</td><td>甲</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>も</td><td>𛃚</td><td>毛</td><td>甲</td><td>音</td><td></td><td>-</td><td>○</td><td>-</td></tr>
+<tr><td>も</td><td>𛃛</td><td>茂</td><td>両</td><td>音</td><td></td><td>○</td><td>○</td><td>-</td></tr>
+<tr><td>も</td><td>𛃜</td><td>裳</td><td>両</td><td>訓</td><td></td><td>-</td><td>○</td><td>-</td></tr>
+<tr><td>も</td><td>𛄝</td><td>无</td><td>-</td><td>音</td><td>ムの万葉仮名</td><td>？</td><td>？</td><td>？</td></tr>
+<tr><td>も</td><td>𛄞</td><td>无</td><td>-</td><td>音</td><td>ムの万葉仮名</td><td>-</td><td>○</td><td>-</td></tr>
       </tbody>
       <tbody id="yo">
-<tr><td>よ</td><td>よ</td><td>與</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>よ</td><td>𛃧</td><td>代</td><td>乙</td><td>訓</td><td></td></tr>
-<tr><td>よ</td><td>𛃨</td><td>余</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>よ</td><td>𛃩</td><td>與</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>よ</td><td>𛃪</td><td>與</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>よ</td><td>𛃫</td><td>與</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>よ</td><td>𛃬</td><td>餘</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>よ</td><td>𛃢</td><td>夜</td><td>甲</td><td>訓</td><td></td></tr>
+<tr><td>よ</td><td>よ</td><td>與</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>よ</td><td>𛃧</td><td>代</td><td>乙</td><td>訓</td><td></td><td>？</td><td>？</td><td>？</td></tr>
+<tr><td>よ</td><td>𛃨</td><td>余</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>よ</td><td>𛃩</td><td>與</td><td>乙</td><td>音</td><td></td><td>？</td><td>？</td><td>？</td></tr>
+<tr><td>よ</td><td>𛃪</td><td>與</td><td>乙</td><td>音</td><td></td><td>-</td><td>○</td><td>○</td></tr>
+<tr><td>よ</td><td>𛃫</td><td>與</td><td>乙</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>よ</td><td>𛃬</td><td>餘</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>よ</td><td>𛃢</td><td>夜</td><td>甲</td><td>訓</td><td></td><td>-</td><td>○</td><td>-</td></tr>
       </tbody>
       <tbody id="ro">
-<tr><td>ろ</td><td>ろ</td><td>呂</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>ろ</td><td>𛄂</td><td>呂</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>ろ</td><td>𛄃</td><td>呂</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>ろ</td><td>𛄄</td><td>婁</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>ろ</td><td>𛄅</td><td>樓</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>ろ</td><td>𛄆</td><td>路</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>ろ</td><td>𛄇</td><td>露</td><td>甲</td><td>音</td><td></td></tr>
+<tr><td>ろ</td><td>ろ</td><td>呂</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>ろ</td><td>𛄂</td><td>呂</td><td>乙</td><td>音</td><td></td><td>-</td><td>○</td><td>-</td></tr>
+<tr><td>ろ</td><td>𛄃</td><td>呂</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>ろ</td><td>𛄄</td><td>婁</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>ろ</td><td>𛄅</td><td>樓</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>ろ</td><td>𛄆</td><td>路</td><td>甲</td><td>音</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>ろ</td><td>𛄇</td><td>露</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
       </tbody>
       <tbody id="e">
-<tr><td>え</td><td>え</td><td>衣</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>え</td><td>𛀏</td><td>盈</td><td>-</td><td>音</td><td></td></tr>
-<tr><td>え</td><td>𛀐</td><td>縁</td><td>-</td><td>音</td><td></td></tr>
-<tr><td>え</td><td>𛀑</td><td>衣</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>え</td><td>𛀒</td><td>衣</td><td>甲</td><td>音</td><td></td></tr>
-<tr><td>え</td><td>𛀓</td><td>要</td><td>乙</td><td>音</td><td></td></tr>
-<tr><td>え</td><td>𛀁</td><td>江</td><td>乙</td><td>訓</td><td></td></tr>
+<tr><td>え</td><td>え</td><td>衣</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>え</td><td>𛀁</td><td>江</td><td>乙</td><td>訓</td><td></td><td>○</td><td>○</td><td>○</td></tr>
+<tr><td>え</td><td>𛀏</td><td>盈</td><td>-</td><td>音</td><td></td><td>○</td><td>-</td><td>-</td></tr>
+<tr><td>え</td><td>𛀐</td><td>縁</td><td>-</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>え</td><td>𛀑</td><td>衣</td><td>甲</td><td>音</td><td></td><td>○</td><td>○</td><td>-</td></tr>
+<tr><td>え</td><td>𛀒</td><td>衣</td><td>甲</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>え</td><td>𛀓</td><td>要</td><td>乙</td><td>音</td><td></td><td>-</td><td>-</td><td>-</td></tr>
       </tbody>
     </table>
 
@@ -278,8 +298,8 @@
     </ul>
 
     <p>
-      以上のことから、変体仮名を使って上代特殊仮名遣の甲乙を書き分けようとすると以下の通り（メ乙類は「晩」の声符ということで仮に<span class="char">𛃔</span>を置く）。
-      複数の仮名候補のある音節は、<a href="https://cid.ninjal.ac.jp/kana">学術情報交換用変体仮名 | 国立国語研究所</a>にもとづき、精興社変体仮名、中西印刷変体仮名、明治27年築地活版五号明朝体活字変体仮名への収録数が最大の変体仮名を選択する（下表太字。同着の場合は文字コードの小さいものを選択する）。
+      以上のことから、上代特殊仮名遣の甲乙を区別しない場合は通行のかな、区別する場合は字源の万葉仮名の甲乙に応じて変体仮名を選択し書き分けようとすると以下の通り（メ乙類は「晩」の声符ということで仮に<span class="char">𛃔</span>を置く）。
+      複数の仮名候補のある音節は、精興社変体仮名、中西印刷変体仮名、明治27年築地活版五号明朝体活字変体仮名への収録数が最大の変体仮名を選択する（下表太字。同着の場合は文字コードの小さいものを選択する）。
     </p>
     <table id="syllables">
       <thead>
