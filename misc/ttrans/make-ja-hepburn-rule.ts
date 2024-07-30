@@ -1,7 +1,7 @@
-import { addJaChoonMark, printRule, RuleEntry }  from './util.ts'
+import { addJaHepburnChoonMark, printRule, RuleEntry }  from './util.ts'
 
 const makeJaHepburnRule = (): Array<RuleEntry> => {
-    const result: Array<RuleEntry> = jaHepburnPats.flatMap(x => addJaChoonMark(x));
+    const result: Array<RuleEntry> = jaHepburnPats.flatMap(x => addJaHepburnChoonMark(x));
     [
         "k", "s", "t",
         "h", "f", "m", "y", "r",

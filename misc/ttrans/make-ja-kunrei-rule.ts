@@ -1,7 +1,7 @@
-import { addJaChoonMark, printRule, RuleEntry }  from './util.ts'
+import { addJaKunreiChoonMark, printRule, RuleEntry }  from './util.ts'
 
 const makeJaKunreiRule = (): Array<RuleEntry> => {
-    const result: Array<RuleEntry> = jaKunreiPats.flatMap(x => addJaChoonMark(x));
+    const result: Array<RuleEntry> = jaKunreiPats.flatMap(x => addJaKunreiChoonMark(x));
     [
         "k", "s", "t",
         "h", "m", "y", "r",

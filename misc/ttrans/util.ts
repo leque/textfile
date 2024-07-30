@@ -36,10 +36,10 @@ export const addZhToneMark2 = (input: string, replacement: string): Array<[strin
     return [[text, replacement + " "]];
 };
 
-export const addJaChoonMark = (input: [string, string]): Array<RuleEntry> =>
+export const addJaHepburnChoonMark = (input: [string, string]): Array<RuleEntry> =>
     addJaChoonMark_ (input, "\u{0304}");
 
-export const addJaOldChoonMark = (input: [string, string]): Array<RuleEntry> =>
+export const addJaKunreiChoonMark = (input: [string, string]): Array<RuleEntry> =>
     addJaChoonMark_ (input, "\u{0302}");
 
 const addJaChoonMark_ = (input: [string, string], mark: string): Array<RuleEntry> => {
