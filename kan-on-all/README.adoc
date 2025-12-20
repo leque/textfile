@@ -1,0 +1,3 @@
+= 廣韻小韻日本漢音表
+
+https://github.com/kytlogia/Zyevio/tree/master[隋語資料庫]の隋語広韻全字表の小韻代表字に日本漢音を付したものです。
