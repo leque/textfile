@@ -37,4 +37,5 @@ makeCRule() {
     makeCRule cnEduRule make-cn-edu-rule.ts
     makeCRule cnEduToneRule make-cn-edu+tone-rule.ts
     cat cn-unihan-mandarin-rule.js
+    cat ja-kannon-rule.js
 } > "$ctrans"

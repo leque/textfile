@@ -50,6 +50,8 @@
               return cnUnihanMandarinEduRule;
           case 'cn-unihan-mandarin-edu+tone':
               return cnUnihanMandarinEduToneRule;
+          case 'ja-kannon':
+              return jaKannonRule;
           default:
               return [];
           }
@@ -107,7 +109,7 @@
     <div class="container mt-4 mb-5">
     <h1>中国語カタカナ変換</h1>
     <ul>
-      <li><a href="https://cn.heibonsha.co.jp/">中国語音節表記ガイドライン［平凡社版］</a>に基づき中国語の漢字表記や拼音表記をカタカナ表記に変換します。</li>
+      <li><a href="https://cn.heibonsha.co.jp/">中国語音節表記ガイドライン［平凡社版］</a>等に基づき中国語の漢字表記や拼音表記をカタカナ表記に変換します。</li>
       <li>変換はすべてブラウザ内で行なっています。入力内容がサーバーに送信されることはありません。</li>
       <li>漢字→拼音は文脈は考慮せずUnicodeのUnihan Databaseに基づき変換しています。そのため、多音字の変換結果は不正確な可能性があります。</li>
       <li>カタカナ表記での声調の表記法は注音符号を参考にしています。</li>
@@ -131,6 +133,7 @@
               <option value="cn-unihan-mandarin-edu">Unihan Database Mandarin Reading + 平凡社版中国語音節表記語学教育向け表記ガイドライン</option>
               <option value="cn-unihan-mandarin-edu+tone">Unihan Database Mandarin Reading + 平凡社版中国語音節表記語学教育向け表記ガイドライン + 声調記号</option>
             </optgroup>
+            <option value="ja-kannon">experimental: 漢字→カタカナ（日本漢音）</option>
           </select>
         </div>
       </div>
