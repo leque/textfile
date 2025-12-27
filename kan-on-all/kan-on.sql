@@ -3,7 +3,18 @@ SELECT
   k.`漢音`
   FROM
     `廣韻小韻日本漢音表.csv` AS k
-    INNER JOIN `隋語廣韻全字表.csv` AS z
+    INNER JOIN ((SELECT
+                   z1.`字`,
+                   z1.`小韻`
+                   FROM `隋語廣韻全字表.csv` AS z1)
+                   UNION ALL
+                   (SELECT
+                      os.`字`,
+                      z2.`小韻`
+                      FROM `隋語廣韻全字表.csv` AS z2
+                           INNER JOIN `jp-old-style.csv` AS os
+                               ON z2.`字` = os.`旧字`))
+                 AS z
         ON k.`小韻` = z.`小韻`
  WHERE
   k.`漢音` IS NOT NULL
