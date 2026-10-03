@@ -29,6 +29,7 @@ makeCRule() {
     makeRule jaWaapuroHepburnRule make-ja-waapuro-hepburn-rule.ts
     makeRule jaWaapuroKunreiRule make-ja-waapuro-kunrei-rule.ts
     makeRule jaWaapuroKunreiJoudaiRule make-ja-waapuro-kunrei-joudai-rule.ts
+    makeRule latinKanaRule make-latin-kana-rule.ts
 } > "$ttrans"
 
 {
