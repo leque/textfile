@@ -58,22 +58,24 @@ const result = [
 
     ...cRule('qu', null, 'クァ', 'クィ', 'クウ', 'クェ', 'クォ', null, null),
     ...cRule('ngu', null, 'ングァ', 'ングィ', 'ングウ', 'ングェ', 'ングォ', null, null),
-    ...cRule('j', null, 'ヤ', 'イ', 'ユ', 'イェ', 'ヨ', null, null),
-    ...cRule('v', null, 'ワ', 'ウィ', 'ウ', 'ウェ', 'ウォ', null, null),
+    ...cRule('j', 'イ', 'ヤ', 'イ', 'ユ', 'イェ', 'ヨ', null, null),
+    ...cRule('v', 'ウ', 'ワ', 'ウィ', 'ウ', 'ウェ', 'ウォ', null, null),
     ...cRule('y', null, 'ヤ', 'イ', 'ユ', 'イェ', 'ヨ', null, null),
-    ...cRule('w', null, 'ワ', 'ウィ', 'ウ', 'ウェ', 'ウォ', null, null),
+    ...cRule('w', 'ウ', 'ワ', 'ウィ', 'ウ', 'ウェ', 'ウォ', null, null),
 
     ...rule('a', 'ア'),
     ...rule('i', 'イ'),
     ...rule('u', 'ウ'),
     ...rule('e', 'エ'),
     ...rule('o', 'オ'),
+    ...rule('y', 'ユ'),
 
     ...rule('ā', 'アー'),
     ...rule('ī', 'イー'),
     ...rule('ū', 'ウー'),
     ...rule('ē', 'エー'),
     ...rule('ō', 'オー'),
+    ...rule('ȳ', 'ユー'),
 
     { pattern: 'bs', replacement: 'プ', next: 's' },
     { pattern: 'bt', replacement: 'プ', next: 't' },
