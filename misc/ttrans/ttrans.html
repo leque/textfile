@@ -54,6 +54,8 @@
               return jaWaapuroKunreiJoudaiRule;
           case 'la-kana':
               return latinKanaRule;
+          case 'ja-chem-kana':
+              return jaChemKanaRule;
           default:
               return [];
           }
@@ -172,6 +174,7 @@
                 <option value="ja-waapuro-hepburn">ヘボン式風ワープロローマ字</option>
                 <option value="ja-waapuro-kunrei">訓令式風ワープロローマ字</option>
                 <option value="la-kana">古典ラテン語カナ転写</option>
+                <option value="ja-chem-kana">日本化学会「化合物名字訳基準」</option>
               </optgroup>
               <optgroup label="ローマ字→ひらがな">
                 <option value="ja-waapuro-kunrei-joudai">訓令式風ワープロローマ字+上代特殊仮名遣</option>
