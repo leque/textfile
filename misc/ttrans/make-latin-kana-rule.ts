@@ -1,6 +1,8 @@
 /*
  * ラテン語→カナ変換 JSON ルール生成
  */
+export {};
+
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const cRule = (c: string,

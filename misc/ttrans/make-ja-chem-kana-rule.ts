@@ -1,4 +1,6 @@
 /* 化合物名字訳基準 */
+export {};
+
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const cRule = (c: string,
