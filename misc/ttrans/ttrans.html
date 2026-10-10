@@ -8,6 +8,7 @@
       @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Hentaigana:wght@200..900&display=swap');
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
     <style type="text/css">
       #text, #result, #translation-rule {
           font-family : "Noto Serif JP", "Noto Serif Hentaigana", var(--bs-font-sans-serif);
@@ -158,37 +159,29 @@
     <div id="error" class="alert alert-danger">
     </div>
     <div>
-      <div class="form-group">
-        <label for="text">入力テキスト</label>
-        <div class="row">
-          <div class="col-11">
-            <textarea id="text" class="form-control" rows="10"></textarea>
-          </div>
-          <div class="col-1">
-            <button class="btn btn-light" onclick="clearText()">clear</button>
-          </div>
-        </div>
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <label for="text" class="form-label mb-0">入力テキスト</label>
+        <button type="button" class="btn btn-sm btn-link p-0" onclick="clearText()">
+          <i class="bi bi-eraser me-1" aria-hidden="true"></i>クリア
+        </button>
       </div>
+      <textarea id="text" class="form-control" rows="10"></textarea>
       <button id="button-do-it" class="btn btn-primary" onclick="doIt()" type="button">
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         変換
       </button>
-      <div class="form-group">
-        <label for="result">変換結果（<a id="permalink" href="">permalink</a>）</label>
-        <div class="row">
-          <div class="col-11">
-            <textarea id="result" class="form-control" rows="10"></textarea>
-          </div>
-          <div class="col-1">
-            <button class="btn btn-light" onclick="copyResult()">copy</button>
-          </div>
-        </div>
+      <div class="d-flex justify-content-between align-items-center mb-1 mt-3">
+        <label for="result" class="form-label mb-0">変換結果（<a id="permalink" href="">permalink</a>）</label>
+        <button type="button" class="btn btn-sm btn-link p-0" onclick="copyResult()">
+          <i class="bi bi-copy me-1" aria-hidden="true"></i>コピー
+        </button>
       </div>
+      <textarea id="result" class="form-control" rows="10"></textarea>
       <hr />
       <div class="form-group">
         <label for="translation-rule-select">変換規則（<code>Array<{ pattern: string; replacement: string; next?: string }></code>）</label>
-        <div class="row">
-          <div class="col-11">
+        <div>
+          <div>
             <select id="translation-rule-select" class="form-select" onchange="populateRule()">
               <optgroup label="ローマ字→カタカナ">
                 <option value="ja-hepburn">ヘボン式ローマ字</option>
@@ -209,8 +202,8 @@
             </select>
           </div>
         </div>
-        <div class="row">
-          <div class="col-11">
+        <div>
+          <div>
             <textarea id="translation-rule" class="form-control" rows="10"></textarea>
           </div>
         </div>
