@@ -3,15 +3,12 @@
   <head>
     <title>テキスト変換ツール</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
-      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Hentaigana:wght@200..900&display=swap');
-    </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://genzui.mkpo.li/genzui.css">
     <style type="text/css">
       #text, #result, #translation-rule {
-          font-family : "Noto Serif JP", "Noto Serif Hentaigana", var(--bs-font-sans-serif);
+          font-family : "GenZui Serif", var(--bs-font-sans-serif);
       }
       #translation-rule-select {
         background-color: var(--bs-tertiary-bg);
@@ -154,6 +151,7 @@
         変換規則は編集できます。規則は雰囲気で読んで下さい。
       </li>
       <li>変換はすべてブラウザ内で行なっています。入力内容がサーバーに送信されることはありません。</li>
+      <li>使用フォント：<a href="https://genzui.mkpo.li/">源萃明朝</a></li>
     </ul>
     <hr />
     <div id="error" class="alert alert-danger">
